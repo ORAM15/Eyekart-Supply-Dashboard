@@ -1,0 +1,98 @@
+{
+  "entities": {
+    "Branch": {
+      "title": "Branch",
+      "description": "Retail eyewear counter or clinic branch under Eyekart Healthcare Limited",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "srn": { "type": "number" },
+        "name": { "type": "string", "maxLength": 128 },
+        "originalName": { "type": "string", "maxLength": 128 },
+        "hasNameAnomaly": { "type": "boolean" },
+        "remarks": { "type": "string", "maxLength": 256 },
+        "minThreshold": { "type": "number" },
+        "status": { "type": "string", "enum": ["HEALTHY", "LOW_STOCK", "OUT_OF_STOCK"] },
+        "isActive": { "type": "boolean" },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "srn", "name", "minThreshold", "status", "isActive"]
+    },
+    "Order": {
+      "title": "Order",
+      "description": "Stock requisition order for male, female, and kids eyewear frames",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "orderNumber": { "type": "string", "maxLength": 64 },
+        "branchId": { "type": "string", "maxLength": 64 },
+        "branchName": { "type": "string", "maxLength": 128 },
+        "status": { "type": "string", "enum": ["DRAFT", "SUBMITTED", "APPROVED", "DISPATCHED", "RECEIVED", "REJECTED", "CANCELLED"] },
+        "requestedMale": { "type": "number" },
+        "requestedFemale": { "type": "number" },
+        "requestedKids": { "type": "number" },
+        "totalRequested": { "type": "number" },
+        "requestedBy": { "type": "string", "maxLength": 128 },
+        "remarks": { "type": "string", "maxLength": 500 },
+        "createdAt": { "type": "string", "format": "date-time" },
+        "updatedAt": { "type": "string", "format": "date-time" }
+      },
+      "required": ["id", "orderNumber", "branchId", "status", "totalRequested", "requestedBy"]
+    },
+    "StockMovement": {
+      "title": "StockMovement",
+      "description": "Immutable audit record of every frame stock alteration or shipment",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "timestamp": { "type": "string", "format": "date-time" },
+        "branchId": { "type": "string", "maxLength": 64 },
+        "branchName": { "type": "string", "maxLength": 128 },
+        "movementType": { "type": "string" },
+        "category": { "type": "string" },
+        "previousOnHand": { "type": "number" },
+        "quantityChanged": { "type": "number" },
+        "resultingOnHand": { "type": "number" },
+        "actor": { "type": "string", "maxLength": 128 },
+        "reason": { "type": "string", "maxLength": 500 }
+      },
+      "required": ["id", "timestamp", "branchId", "movementType", "resultingOnHand", "actor"]
+    },
+    "StockAlert": {
+      "title": "StockAlert",
+      "description": "Low stock and out of stock notification for branches below threshold",
+      "type": "object",
+      "properties": {
+        "id": { "type": "string", "maxLength": 64 },
+        "branchId": { "type": "string", "maxLength": 64 },
+        "branchName": { "type": "string", "maxLength": 128 },
+        "currentStock": { "type": "number" },
+        "minThreshold": { "type": "number" },
+        "shortageAmount": { "type": "number" },
+        "severity": { "type": "string", "enum": ["CRITICAL_ZERO", "LOW_STOCK"] },
+        "detectedAt": { "type": "string", "format": "date-time" },
+        "acknowledged": { "type": "boolean" }
+      },
+      "required": ["id", "branchId", "currentStock", "minThreshold", "severity"]
+    }
+  },
+  "firestore": {
+    "/branches/{branchId}": {
+      "schema": "Branch",
+      "description": "Retail branch master records and configuration"
+    },
+    "/orders/{orderId}": {
+      "schema": "Order",
+      "description": "Frame requisition and fulfillment orders"
+    },
+    "/movements/{movementId}": {
+      "schema": "StockMovement",
+      "description": "Audit trail of all frame stock events"
+    },
+    "/alerts/{alertId}": {
+      "schema": "StockAlert",
+      "description": "Active stock alerts and warning triggers"
+    }
+  }
+}

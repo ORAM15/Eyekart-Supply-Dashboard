@@ -1,0 +1,2755 @@
+{
+  "branches": [
+    {
+      "id": "br-001",
+      "srn": 1,
+      "name": "Bliss BusiaB3:D27",
+      "originalName": "Bliss BusiaB3:D27",
+      "hasNameAnomaly": true,
+      "anomalyReason": "Spreadsheet cell contains accidental range/formula text 'B3:D27'",
+      "isVerified": false,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-002",
+      "srn": 2,
+      "name": "Bliss Diani",
+      "originalName": "Bliss Diani",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "OUT_OF_STOCK",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 0,
+        "totalAvailable": 0,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-004",
+      "srn": 4,
+      "name": "Bliss Eldama Ravine",
+      "originalName": "Bliss Eldama Ravine",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-005",
+      "srn": 5,
+      "name": "Bliss Eldoret Zion mall",
+      "originalName": "Bliss Eldoret Zion mall",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-006",
+      "srn": 6,
+      "name": "Bliss Embakasi",
+      "originalName": "Bliss Embakasi",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-007",
+      "srn": 7,
+      "name": "Bliss Embu",
+      "originalName": "Bliss Embu",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-008",
+      "srn": 8,
+      "name": "Bliss Githurai",
+      "originalName": "Bliss Githurai",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-009",
+      "srn": 9,
+      "name": "Bliss Homabay",
+      "originalName": "Bliss Homabay",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-010",
+      "srn": 10,
+      "name": "Bliss Iten",
+      "originalName": "Bliss Iten",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "OUT_OF_STOCK",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 0,
+        "totalAvailable": 0,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-011",
+      "srn": 11,
+      "name": "Bliss Kakamega",
+      "originalName": "Bliss Kakamega",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-012",
+      "srn": 12,
+      "name": "Bliss Kapenguria",
+      "originalName": "Bliss Kapenguria",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-013",
+      "srn": 13,
+      "name": "Bliss Kapsabet",
+      "originalName": "Bliss Kapsabet",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-014",
+      "srn": 14,
+      "name": "Bliss Kericho",
+      "originalName": "Bliss Kericho",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-015",
+      "srn": 15,
+      "name": "Bliss Kimilili",
+      "originalName": "Bliss Kimilili",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-016",
+      "srn": 16,
+      "name": "Bliss Kisii 1",
+      "originalName": "Bliss Kisii 1",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-017",
+      "srn": 17,
+      "name": "Bliss Kisumu Mega Plaza",
+      "originalName": "Bliss Kisumu Mega Plaza",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-018",
+      "srn": 18,
+      "name": "Bliss Kitale",
+      "originalName": "Bliss Kitale",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-019",
+      "srn": 19,
+      "name": "Bliss Langata",
+      "originalName": "Bliss Langata",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-020",
+      "srn": 20,
+      "name": "Bliss Machakos",
+      "originalName": "Bliss Machakos",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-021",
+      "srn": 21,
+      "name": "Bliss Maralal",
+      "originalName": "Bliss Maralal",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-022",
+      "srn": 22,
+      "name": "Bliss Mbale",
+      "originalName": "Bliss Mbale",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-023",
+      "srn": 23,
+      "name": "Bliss Moi Avenue",
+      "originalName": "Bliss Moi Avenue",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 80,
+          "reserved": 0,
+          "available": 80,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 100,
+          "reserved": 0,
+          "available": 100,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 200,
+        "totalAvailable": 200,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-024",
+      "srn": 24,
+      "name": "Bliss Mtwapa",
+      "originalName": "Bliss Mtwapa",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-025",
+      "srn": 25,
+      "name": "Bliss Muranga",
+      "originalName": "Bliss Muranga",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 80,
+          "reserved": 0,
+          "available": 80,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 100,
+          "reserved": 0,
+          "available": 100,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 200,
+        "totalAvailable": 200,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-026",
+      "srn": 26,
+      "name": "Bliss Naivasha",
+      "originalName": "Bliss Naivasha",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-027",
+      "srn": 27,
+      "name": "Bliss Nanyuki",
+      "originalName": "Bliss Nanyuki",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-028",
+      "srn": 28,
+      "name": "Bliss Ol Kalou",
+      "originalName": "Bliss Ol Kalou",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "OUT_OF_STOCK",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 0,
+        "totalAvailable": 0,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-029",
+      "srn": 29,
+      "name": "Bliss Rongai",
+      "originalName": "Bliss Rongai",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "OUT_OF_STOCK",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 0,
+        "totalAvailable": 0,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-030",
+      "srn": 30,
+      "name": "Bliss Siaya",
+      "originalName": "Bliss Siaya",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 0,
+          "reserved": 0,
+          "available": 0,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 90,
+        "totalAvailable": 90,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-031",
+      "srn": 31,
+      "name": "Bliss Thika",
+      "originalName": "Bliss Thika",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-032",
+      "srn": 32,
+      "name": "Bliss Umoja",
+      "originalName": "Bliss Umoja",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-033",
+      "srn": 33,
+      "name": "Bliss Wote",
+      "originalName": "Bliss Wote",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 60,
+          "reserved": 0,
+          "available": 60,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 70,
+          "reserved": 0,
+          "available": 70,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 20,
+          "reserved": 0,
+          "available": 20,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 150,
+        "totalAvailable": 150,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-034",
+      "srn": 34,
+      "name": "Clinix Haille Selasie",
+      "originalName": "Clinix Haille Selasie",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-036",
+      "srn": 36,
+      "name": "Medicross Nakuru",
+      "originalName": "Medicross Nakuru",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    },
+    {
+      "id": "br-037",
+      "srn": 37,
+      "name": "Medicross Narok",
+      "originalName": "Medicross Narok",
+      "hasNameAnomaly": false,
+      "isVerified": true,
+      "remarks": "MIX Metals &Plast",
+      "minThreshold": 50,
+      "status": "HEALTHY",
+      "isActive": true,
+      "inventory": {
+        "male": {
+          "onHand": 40,
+          "reserved": 0,
+          "available": 40,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "female": {
+          "onHand": 50,
+          "reserved": 0,
+          "available": 50,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "kids": {
+          "onHand": 10,
+          "reserved": 0,
+          "available": 10,
+          "pendingRequested": 0,
+          "approved": 0,
+          "dispatched": 0,
+          "received": 0
+        },
+        "totalOnHand": 100,
+        "totalAvailable": 100,
+        "totalPendingRequested": 0,
+        "totalDispatched": 0
+      },
+      "createdAt": "2026-10-18T09:15:32.691Z",
+      "updatedAt": "2026-10-18T09:15:32.691Z",
+      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+    }
+  ],
+  "orders": [],
+  "movements": [
+    {
+      "id": "mvt-init-br-001",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-001",
+      "branchName": "Bliss BusiaB3:D27",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 1)"
+    },
+    {
+      "id": "mvt-init-br-002",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-002",
+      "branchName": "Bliss Diani",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 0,
+      "resultingOnHand": 0,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 2)"
+    },
+    {
+      "id": "mvt-init-br-004",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-004",
+      "branchName": "Bliss Eldama Ravine",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 4)"
+    },
+    {
+      "id": "mvt-init-br-005",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 5)"
+    },
+    {
+      "id": "mvt-init-br-006",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-006",
+      "branchName": "Bliss Embakasi",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 6)"
+    },
+    {
+      "id": "mvt-init-br-007",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-007",
+      "branchName": "Bliss Embu",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 7)"
+    },
+    {
+      "id": "mvt-init-br-008",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-008",
+      "branchName": "Bliss Githurai",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 8)"
+    },
+    {
+      "id": "mvt-init-br-009",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-009",
+      "branchName": "Bliss Homabay",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 9)"
+    },
+    {
+      "id": "mvt-init-br-010",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-010",
+      "branchName": "Bliss Iten",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 0,
+      "resultingOnHand": 0,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 10)"
+    },
+    {
+      "id": "mvt-init-br-011",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-011",
+      "branchName": "Bliss Kakamega",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 11)"
+    },
+    {
+      "id": "mvt-init-br-012",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-012",
+      "branchName": "Bliss Kapenguria",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 12)"
+    },
+    {
+      "id": "mvt-init-br-013",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-013",
+      "branchName": "Bliss Kapsabet",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 13)"
+    },
+    {
+      "id": "mvt-init-br-014",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-014",
+      "branchName": "Bliss Kericho",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 14)"
+    },
+    {
+      "id": "mvt-init-br-015",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-015",
+      "branchName": "Bliss Kimilili",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 15)"
+    },
+    {
+      "id": "mvt-init-br-016",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-016",
+      "branchName": "Bliss Kisii 1",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 16)"
+    },
+    {
+      "id": "mvt-init-br-017",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-017",
+      "branchName": "Bliss Kisumu Mega Plaza",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 17)"
+    },
+    {
+      "id": "mvt-init-br-018",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-018",
+      "branchName": "Bliss Kitale",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 18)"
+    },
+    {
+      "id": "mvt-init-br-019",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-019",
+      "branchName": "Bliss Langata",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 19)"
+    },
+    {
+      "id": "mvt-init-br-020",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-020",
+      "branchName": "Bliss Machakos",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 20)"
+    },
+    {
+      "id": "mvt-init-br-021",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-021",
+      "branchName": "Bliss Maralal",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 21)"
+    },
+    {
+      "id": "mvt-init-br-022",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-022",
+      "branchName": "Bliss Mbale",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 22)"
+    },
+    {
+      "id": "mvt-init-br-023",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-023",
+      "branchName": "Bliss Moi Avenue",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 200,
+      "resultingOnHand": 200,
+      "maleChanged": 80,
+      "femaleChanged": 100,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 80,
+        "female": 100,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 23)"
+    },
+    {
+      "id": "mvt-init-br-024",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-024",
+      "branchName": "Bliss Mtwapa",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 24)"
+    },
+    {
+      "id": "mvt-init-br-025",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-025",
+      "branchName": "Bliss Muranga",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 200,
+      "resultingOnHand": 200,
+      "maleChanged": 80,
+      "femaleChanged": 100,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 80,
+        "female": 100,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 25)"
+    },
+    {
+      "id": "mvt-init-br-026",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-026",
+      "branchName": "Bliss Naivasha",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 26)"
+    },
+    {
+      "id": "mvt-init-br-027",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-027",
+      "branchName": "Bliss Nanyuki",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 27)"
+    },
+    {
+      "id": "mvt-init-br-028",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-028",
+      "branchName": "Bliss Ol Kalou",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 0,
+      "resultingOnHand": 0,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 28)"
+    },
+    {
+      "id": "mvt-init-br-029",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-029",
+      "branchName": "Bliss Rongai",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 0,
+      "resultingOnHand": 0,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 29)"
+    },
+    {
+      "id": "mvt-init-br-030",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-030",
+      "branchName": "Bliss Siaya",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 90,
+      "resultingOnHand": 90,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 0
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 30)"
+    },
+    {
+      "id": "mvt-init-br-031",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-031",
+      "branchName": "Bliss Thika",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 31)"
+    },
+    {
+      "id": "mvt-init-br-032",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-032",
+      "branchName": "Bliss Umoja",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 32)"
+    },
+    {
+      "id": "mvt-init-br-033",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-033",
+      "branchName": "Bliss Wote",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 150,
+      "resultingOnHand": 150,
+      "maleChanged": 60,
+      "femaleChanged": 70,
+      "kidsChanged": 20,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 33)"
+    },
+    {
+      "id": "mvt-init-br-034",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-034",
+      "branchName": "Clinix Haille Selasie",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 34)"
+    },
+    {
+      "id": "mvt-init-br-036",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-036",
+      "branchName": "Medicross Nakuru",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 36)"
+    },
+    {
+      "id": "mvt-init-br-037",
+      "timestamp": "2026-10-18T09:15:32.691Z",
+      "branchId": "br-037",
+      "branchName": "Medicross Narok",
+      "movementType": "INITIAL_IMPORT",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 100,
+      "resultingOnHand": 100,
+      "maleChanged": 40,
+      "femaleChanged": 50,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "System (SSD Frame Supply List Import)",
+      "reason": "Initial stock imported from spreadsheet reference (SRN 37)"
+    }
+  ],
+  "alerts": [
+    {
+      "id": "alt-br-002-1792314932691-ch3i",
+      "branchId": "br-002",
+      "branchName": "Bliss Diani",
+      "currentStock": 0,
+      "minThreshold": 50,
+      "shortageAmount": 50,
+      "maleBalance": 0,
+      "femaleBalance": 0,
+      "kidsBalance": 0,
+      "severity": "CRITICAL_ZERO",
+      "detectedAt": "2026-10-18T09:15:32.691Z",
+      "acknowledged": false,
+      "recommendedAction": "Critical: Branch completely out of frames. Dispatch emergency batch immediately (min 50+ frames)."
+    },
+    {
+      "id": "alt-br-010-1792314932691-kybc",
+      "branchId": "br-010",
+      "branchName": "Bliss Iten",
+      "currentStock": 0,
+      "minThreshold": 50,
+      "shortageAmount": 50,
+      "maleBalance": 0,
+      "femaleBalance": 0,
+      "kidsBalance": 0,
+      "severity": "CRITICAL_ZERO",
+      "detectedAt": "2026-10-18T09:15:32.691Z",
+      "acknowledged": false,
+      "recommendedAction": "Critical: Branch completely out of frames. Dispatch emergency batch immediately (min 50+ frames)."
+    },
+    {
+      "id": "alt-br-028-1792314932691-qfav",
+      "branchId": "br-028",
+      "branchName": "Bliss Ol Kalou",
+      "currentStock": 0,
+      "minThreshold": 50,
+      "shortageAmount": 50,
+      "maleBalance": 0,
+      "femaleBalance": 0,
+      "kidsBalance": 0,
+      "severity": "CRITICAL_ZERO",
+      "detectedAt": "2026-10-18T09:15:32.691Z",
+      "acknowledged": false,
+      "recommendedAction": "Critical: Branch completely out of frames. Dispatch emergency batch immediately (min 50+ frames)."
+    },
+    {
+      "id": "alt-br-029-1792314932691-361x",
+      "branchId": "br-029",
+      "branchName": "Bliss Rongai",
+      "currentStock": 0,
+      "minThreshold": 50,
+      "shortageAmount": 50,
+      "maleBalance": 0,
+      "femaleBalance": 0,
+      "kidsBalance": 0,
+      "severity": "CRITICAL_ZERO",
+      "detectedAt": "2026-10-18T09:15:32.691Z",
+      "acknowledged": false,
+      "recommendedAction": "Critical: Branch completely out of frames. Dispatch emergency batch immediately (min 50+ frames)."
+    }
+  ],
+  "validationIssues": [
+    {
+      "id": "val-busia-anomaly",
+      "type": "NAME_ANOMALY",
+      "title": "Spreadsheet Formula Artifact in Branch Name",
+      "description": "The first branch name appears as 'Bliss BusiaB3:D27' due to spreadsheet range drag/formula artifact 'B3:D27'. Canonical recommended name: 'Bliss Busia'.",
+      "branchId": "br-001",
+      "srn": 1,
+      "severity": "WARNING",
+      "status": "PENDING_REVIEW",
+      "resolutionAction": "Verify canonical branch name and strip formula suffix."
+    },
+    {
+      "id": "val-srn-gap-3",
+      "type": "SRN_GAP",
+      "title": "SRN Sequence Gap at Index 3",
+      "description": "SRN #3 is absent in the source spreadsheet (jumps from SRN 2 Bliss Diani to SRN 4 Bliss Eldama Ravine). Preserved accurately without creating fake branches.",
+      "srn": 3,
+      "severity": "INFO",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "val-srn-gap-35",
+      "type": "SRN_GAP",
+      "title": "SRN Sequence Gap at Index 35",
+      "description": "SRN #35 is absent in the source spreadsheet (jumps from SRN 34 Clinix Haille Selasie to SRN 36 Medicross Nakuru). Preserved accurately without creating fake branches.",
+      "srn": 35,
+      "severity": "INFO",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "val-total-check",
+      "type": "TOTAL_CHECK",
+      "title": "Sheet Total Reconciliation Audit",
+      "description": "Spreadsheet Cell reported total: 3,740 frames. Calculated sum of all 35 imported branch records: 3,740 frames (Male: 1,500, Female: 1,830, Kids: 410). Exact match verified.",
+      "severity": "INFO",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "val-zero-stock-branches",
+      "type": "ZERO_STOCK",
+      "title": "4 Branches Highlighted with Zero Stock",
+      "description": "Bliss Diani, Bliss Iten, Bliss Ol Kalou, Bliss Rongai are visibly highlighted in sheet with 0 frames. Imported faithfully with 0 stock and immediate alerts.",
+      "severity": "WARNING",
+      "status": "RESOLVED"
+    },
+    {
+      "id": "val-siaya-kids-zero",
+      "type": "CATEGORY_ZERO",
+      "title": "Bliss Siaya Zero Kids Frames",
+      "description": "Bliss Siaya explicitly shows 40 Male, 50 Female, 0 Kids frames in spreadsheet (total 90). Faithfully preserved as 0 kids frames.",
+      "branchId": "br-030",
+      "srn": 30,
+      "severity": "INFO",
+      "status": "RESOLVED"
+    }
+  ],
+  "warehouse": {
+    "maleOnHand": 4500,
+    "femaleOnHand": 4500,
+    "kidsOnHand": 2000,
+    "totalOnHand": 11000,
+    "lastRestockedAt": "2026-10-18T09:15:32.691Z"
+  },
+  "users": [
+    {
+      "id": "usr-sarah",
+      "name": "Sarah Wanjiku",
+      "email": "sarah.wanjiku@eyekart.co.ke",
+      "role": "RECEPTIONIST",
+      "title": "Front Desk & Receptionist (Nairobi Central)"
+    },
+    {
+      "id": "usr-david",
+      "name": "David Kiprop",
+      "email": "oram67672@gmail.com",
+      "role": "ADMIN",
+      "title": "Chief Stock Administrator & Operations Lead"
+    },
+    {
+      "id": "usr-james",
+      "name": "James Mwangi",
+      "email": "james.mwangi@eyekart.co.ke",
+      "role": "BRANCH_USER",
+      "title": "Branch Supervisor (Bliss Eldoret Zion Mall)",
+      "assignedBranchId": "br-005"
+    }
+  ],
+  "settings": {
+    "defaultMinThreshold": 50,
+    "companyName": "Eyekart Healthcare Limited",
+    "timezone": "Africa/Nairobi",
+    "currency": "KES"
+  },
+  "lastInitializedAt": "2026-10-18T09:15:32.691Z"
+}

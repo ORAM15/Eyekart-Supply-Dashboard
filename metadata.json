@@ -1,0 +1,6 @@
+{
+  "name": "Eyekart Healthcare Limited - Eyewear Stock & Order Management System",
+  "description": "Enterprise eyewear stock and branch order management system for Eyekart Healthcare Limited (Kenya) with multi-category inventory tracking, order lifecycle, stock alerts, audit logging, and monthly reports.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

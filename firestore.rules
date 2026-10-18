@@ -1,0 +1,62 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Global Safety Net: Default-deny all document access
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    function isSignedIn() {
+      return request.auth != null;
+    }
+
+    function isVerifiedUser() {
+      return isSignedIn() && request.auth.token.email_verified == true;
+    }
+
+    function isAdmin() {
+      return isSignedIn() && (
+        exists(/databases/$(database)/documents/admins/$(request.auth.uid)) ||
+        request.auth.token.email == "oram67672@gmail.com"
+      );
+    }
+
+    function isValidId(id) {
+      return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$');
+    }
+
+    // Branches collection: Read by signed-in staff, write by admin
+    match /branches/{branchId} {
+      allow read: if isSignedIn();
+      allow create, update, delete: if isAdmin() && isValidId(branchId);
+    }
+
+    // Orders collection: Read by staff, create/submit by receptionist, approve/dispatch by admin
+    match /orders/{orderId} {
+      allow read: if isSignedIn();
+      allow create: if isVerifiedUser() && isValidId(orderId) &&
+        request.resource.data.requestedItems.total > 0;
+      allow update: if isVerifiedUser() && isValidId(orderId) && (
+        // Receptionist can cancel or submit draft
+        (request.resource.data.diff(resource.data).affectedKeys().hasOnly(['status', 'updatedAt', 'cancellationReason', 'timeline'])) ||
+        // Admin can approve, dispatch, or reject
+        isAdmin()
+      );
+      allow delete: if false; // Orders are never permanently deleted (immutable record)
+    }
+
+    // Stock Movements: Append-only audit history, no update or delete allowed
+    match /movements/{movementId} {
+      allow read: if isSignedIn();
+      allow create: if isVerifiedUser() && isValidId(movementId);
+      allow update, delete: if false; // Strict immutability
+    }
+
+    // Alerts collection
+    match /alerts/{alertId} {
+      allow read: if isSignedIn();
+      allow create, update: if isVerifiedUser() && isValidId(alertId);
+      allow delete: if isAdmin();
+    }
+  }
+}
