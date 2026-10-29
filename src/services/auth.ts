@@ -148,7 +148,11 @@ async function clearLocalSession() {
   }
 }
 
-export function getLiveApiBase() {\n  return isLiveCrudConfigured() ? `${supabaseUrl}/functions/v1/eyekart-api` : '/api';\n}\n\nexport function getSupabasePublicConfig() {
+export function getLiveApiBase() {
+  return isLiveCrudConfigured() ? `${supabaseUrl}/functions/v1/eyekart-api` : '/api';
+}
+
+export function getSupabasePublicConfig() {
   return {
     url: supabaseUrl,
     publishableKey,
