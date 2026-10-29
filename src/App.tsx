@@ -197,9 +197,8 @@ const ReceptionistDashboard: React.FC = () => {
           <div role="status" className="mb-5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950 shadow-sm">
             <div className="font-extrabold uppercase tracking-wide">Read-only snapshot mode</div>
             <p className="mt-1">
-              Branch figures use the SSD Frame List baseline (3,740 frames). Warehouse stock and transaction history are not verified in this snapshot.
-              Stock edits, orders, and admin actions are blocked until a secure, persistent backend is connected. The role switcher is a demo control, not authentication.
-              Do not use this preview for live stock operations.
+              Branch figures use the SSD Frame List baseline (3,740 frames). Tap any counter to open its details; the +/− controls let you preview quantity changes.
+              Saving those changes, orders, and admin actions remain disabled until secure authentication and persistent storage are connected. Warehouse stock and transaction history are not verified, and the role switcher is a demo control—not authentication.
             </p>
           </div>
         )}
