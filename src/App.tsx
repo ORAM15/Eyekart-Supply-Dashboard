@@ -20,6 +20,7 @@ import {
 } from 'lucide-react';
 
 const ReceptionistDashboard: React.FC = () => {
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL;
   const {
     branches,
     loading,
@@ -322,7 +323,7 @@ const ReceptionistDashboard: React.FC = () => {
                     key={item.branch.id}
                     counterNumber={item.counterNumber}
                     branch={item.branch}
-                    onClick={() => setSelectedCounterIndex(item.index)}
+                    onClick={() => { if (!isSnapshotMode) setSelectedCounterIndex(item.index); }}
                   />
                 ))}
               </div>
