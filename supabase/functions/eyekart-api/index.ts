@@ -639,7 +639,7 @@ Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders(origin) });
   if (origin && !isAllowedOrigin(origin)) return json(403, { error: "Origin not allowed." }, origin);
 
-  const path = url.pathname.replace(/^\/+/, "").replace(/\/$/, "");
+  const path = url.pathname.replace(/^\/functions\/v1\/eyekart-api\/?/, "").replace(/^\/+/, "").replace(/\/$/, "");
   if (path === "health" && req.method === "GET") {
     return json(200, {
       status: "ok", service: "EyeKart live inventory API", mode: "LIVE_CRUD",
