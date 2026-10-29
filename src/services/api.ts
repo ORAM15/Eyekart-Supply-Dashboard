@@ -313,7 +313,7 @@ export const api = {
     return res.json();
   },
 
-  async getWarehouse(): Promise<{ success: boolean; warehouse: WarehouseInventory }> {
+  async getWarehouse(): Promise<{ success: boolean; warehouse: WarehouseInventory | null; mode?: string; notice?: string }> {
     const res = await fetch(`${API_BASE}/warehouse`, { headers: getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch warehouse stock');
     return res.json();
