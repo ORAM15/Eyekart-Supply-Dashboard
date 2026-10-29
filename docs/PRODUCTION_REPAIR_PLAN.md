@@ -1,6 +1,6 @@
 # EyeKart Supply Dashboard — Repair and Release Plan
 
-Status: repair is isolated to `repair/production-backend`. A read-only Vercel API fallback has been added to replace missing `/api/*` routes. The GitHub Actions type-check, API smoke test and Vite build have passed, and the Vercel Preview deployment reports **Ready**. Live HTTP response verification could not be completed from this session, and this is **not production-ready for stock writes**. No production deploy has been performed by this work.
+Status: repair is isolated to `repair/production-backend`. Vercel Preview is **Ready**, GitHub Actions type-check/API smoke test/Vite build passed, and live preview requests confirmed the API routes. This fixes API sync in the verified preview. The preview remains a read-only snapshot and is **not a live stock-management backend**. Production is still on the old deployment until this PR is merged.
 
 ## Root cause
 
@@ -33,14 +33,15 @@ The original `data/eyekart_db.json` has **not** been overwritten. The owner conf
 
 ## Vercel API fallback added (isolated branch only)
 
-- `api/[...path].ts` provides Vercel function routes for the API GET endpoints.
+- `api/[...path].ts` provides Vercel function routes for top-level API endpoints.
+- Live preview verification initially exposed missing nested route matches (e.g. `/api/branches/br-008` and `/api/reports/monthly` returned Vercel `NOT_FOUND`). Added explicit Vercel handlers for branch details, monthly report and nested branch/order/alert/inventory actions. Re-tested preview: branch details and monthly report now return 200; nested action paths invoke the shared handler rather than Vercel `NOT_FOUND`.
 - It builds branch balances from `src/data/initialBranches.ts` and fails closed if counts/category totals do not equal the verified baseline.
 - It serves the baseline branches, branch detail, empty order/activity history, baseline stock alerts, source reconciliation, and a baseline-only monthly report.
 - It returns `warehouse: null` because the screenshot does not state warehouse balances.
 - All mutation requests return HTTP 503 with `READ_ONLY_SNAPSHOT`; no stock/order/admin writes are accepted.
 - The UI displays a warning when `VITE_API_BASE_URL` is unset, explaining this is read-only, baseline-only mode and the demo role switcher is not authentication.
 - A smoke-test script checks totals, Githurai/Iten corrections, exclusion of demo orders/movements, unknown warehouse, and blocked writes.
-- GitHub Actions workflow `.github/workflows/validate-repair.yml` runs type-check, smoke test and Vite build; all three checks passed on the current implementation before this documentation-only update.
+- GitHub Actions workflow `.github/workflows/validate-repair.yml` runs type-check, smoke test and Vite build; all three checks pass on the current implementation. Smoke tests include explicit nested route imports and assert that every mutation handler returns HTTP 503 with `READ_ONLY_SNAPSHOT`.
 
 This fallback is a **safe bridge** to fix the missing API routes and give the UI verified baseline data. It is not a live operational backend: data are snapshot-only, and changes are intentionally disabled. The Vercel site must not be used as the live stock-management system until the security/persistence gates below are completed.
 
