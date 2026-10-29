@@ -1,6 +1,6 @@
 # EyeKart Supply Dashboard — Repair and Release Plan
 
-Status: repair is isolated to `repair/production-backend`. A read-only Vercel API fallback has been added to prevent API 404s and serve the verified screenshot baseline. This is **not yet production-ready for stock writes**. No production deploy has been performed by this work.
+Status: repair is isolated to `repair/production-backend`. A read-only Vercel API fallback has been added to replace missing `/api/*` routes. The GitHub Actions type-check, API smoke test and Vite build have passed, and the Vercel Preview deployment reports **Ready**. Live HTTP response verification could not be completed from this session, and this is **not production-ready for stock writes**. No production deploy has been performed by this work.
 
 ## Root cause
 
@@ -40,7 +40,7 @@ The original `data/eyekart_db.json` has **not** been overwritten. The owner conf
 - All mutation requests return HTTP 503 with `READ_ONLY_SNAPSHOT`; no stock/order/admin writes are accepted.
 - The UI displays a warning when `VITE_API_BASE_URL` is unset, explaining this is read-only, baseline-only mode and the demo role switcher is not authentication.
 - A smoke-test script checks totals, Githurai/Iten corrections, exclusion of demo orders/movements, unknown warehouse, and blocked writes.
-- GitHub Actions workflow `.github/workflows/validate-repair.yml` runs type-check, smoke test and Vite build.
+- GitHub Actions workflow `.github/workflows/validate-repair.yml` runs type-check, smoke test and Vite build; all three checks passed on the current implementation before this documentation-only update.
 
 This fallback is a **safe bridge** to fix the missing API routes and give the UI verified baseline data. It is not a live operational backend: data are snapshot-only, and changes are intentionally disabled. The Vercel site must not be used as the live stock-management system until the security/persistence gates below are completed.
 
@@ -67,12 +67,12 @@ This fallback is a **safe bridge** to fix the missing API routes and give the UI
 - Keep the existing JSON as an audit snapshot and stage a separate dry-run import. Do not update stock until reviewed.
 
 ### Deployment and verification
-- Run GitHub CI and resolve all failures.
-- Deploy/preview the branch through the linked Vercel project and verify `/api/health`, `/api/branches`, `/api/validation`, plus 503 on mutations.
+- GitHub CI type-check, API smoke test and Vite build passed. Re-run after any further application edits.
+- Vercel Preview deployment status reports Ready. Still verify `/api/health`, `/api/branches`, `/api/validation`, plus 503 on mutations from a browser that can access the protected Preview deployment.
 - Confirm the dashboard no longer shows the connection error and shows the read-only banner.
 - Configure authenticated persistent production backend before removing read-only mode.
 - Do not merge, deploy as production, or change `main` until reviewed and explicitly approved.
 
 ## State of truth
 
-Inventory screenshot reconciliation: **complete for branch starting balances**. API 404: **addressed in branch by new Vercel functions, awaiting CI/Vercel deployment verification**. Production writes, verified auth, warehouse stock and transaction history: **not solved/configured**. No database or production credentials are available in this environment; no production deployment has been performed.
+Inventory screenshot reconciliation: **complete for branch starting balances**. Code/type-check/API handler tests/Vite build: **passed**. Vercel Preview: **Ready**. Runtime browser verification remains pending. Production writes, verified auth, warehouse stock and transaction history: **not solved/configured**. No database or production credentials are available in this environment; no production deployment has been performed.
