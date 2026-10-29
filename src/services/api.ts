@@ -63,7 +63,7 @@ export const api = {
   },
 
   async getBranches(): Promise<{ success: boolean; branches: Branch[]; totalCount: number }> {
-    const res = await fetch(`${API_BASE}/branches`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/branches`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch branches');
     return res.json();
   },
@@ -75,7 +75,7 @@ export const api = {
     movements: StockMovement[];
     alerts: StockAlert[];
   }> {
-    const res = await fetch(`${API_BASE}/branches/${id}`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/branches/${id}`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch branch details');
     return res.json();
   },
@@ -89,7 +89,7 @@ export const api = {
   }): Promise<{ success: boolean; branch?: Branch; isDuplicateConflict?: boolean; error?: string }> {
     const res = await fetch(`${API_BASE}/branches`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     return res.json();
@@ -101,7 +101,7 @@ export const api = {
   ): Promise<{ success: boolean; branch: Branch }> {
     const res = await fetch(`${API_BASE}/branches/${id}`, {
       method: 'PUT',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -115,7 +115,7 @@ export const api = {
   ): Promise<{ success: boolean; branch: Branch; movements: StockMovement[]; message: string }> {
     const res = await fetch(`${API_BASE}/branches/${id}/stock`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -129,7 +129,7 @@ export const api = {
   ): Promise<{ success: boolean; branch: Branch }> {
     const res = await fetch(`${API_BASE}/branches/${id}/verify-name`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify({ canonicalName }),
     });
     const result = await res.json();
@@ -138,7 +138,7 @@ export const api = {
   },
 
   async getOrders(): Promise<{ success: boolean; orders: Order[] }> {
-    const res = await fetch(`${API_BASE}/orders`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/orders`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch orders');
     return res.json();
   },
@@ -157,7 +157,7 @@ export const api = {
     const idempotencyKey = data.idempotencyKey || `ord-req-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`;
     const res = await fetch(`${API_BASE}/orders`, {
       method: 'POST',
-      headers: getHeaders({ 'idempotency-key': idempotencyKey }),
+      headers: await getHeaders({ 'idempotency-key': idempotencyKey }),
       body: JSON.stringify({ ...data, idempotencyKey }),
     });
     const result = await res.json();
@@ -168,7 +168,7 @@ export const api = {
   async submitOrder(id: string, actor: string): Promise<{ success: boolean; order: Order; branch: Branch }> {
     const res = await fetch(`${API_BASE}/orders/${id}/submit`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify({ actor }),
     });
     const result = await res.json();
@@ -182,7 +182,7 @@ export const api = {
   ): Promise<{ success: boolean; order: Order; branch: Branch }> {
     const res = await fetch(`${API_BASE}/orders/${id}/approve`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -202,7 +202,7 @@ export const api = {
   ): Promise<{ success: boolean; order: Order; branch: Branch; warehouse: WarehouseInventory }> {
     const res = await fetch(`${API_BASE}/orders/${id}/dispatch`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -216,7 +216,7 @@ export const api = {
   ): Promise<{ success: boolean; order: Order; branch: Branch }> {
     const res = await fetch(`${API_BASE}/orders/${id}/receive`, {
       method: 'POST',
-      headers: getHeaders(data.idempotencyKey ? { 'idempotency-key': data.idempotencyKey } : undefined),
+      headers: await getHeaders(data.idempotencyKey ? { 'idempotency-key': data.idempotencyKey } : undefined),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -230,7 +230,7 @@ export const api = {
   ): Promise<{ success: boolean; order: Order }> {
     const res = await fetch(`${API_BASE}/orders/${id}/reject`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -244,7 +244,7 @@ export const api = {
   ): Promise<{ success: boolean; order: Order }> {
     const res = await fetch(`${API_BASE}/orders/${id}/cancel`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -261,7 +261,7 @@ export const api = {
   }): Promise<{ success: boolean; branch: Branch }> {
     const res = await fetch(`${API_BASE}/inventory/adjust`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify(data),
     });
     const result = await res.json();
@@ -270,7 +270,7 @@ export const api = {
   },
 
   async getAlerts(): Promise<{ success: boolean; alerts: StockAlert[] }> {
-    const res = await fetch(`${API_BASE}/alerts`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/alerts`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch alerts');
     return res.json();
   },
@@ -281,7 +281,7 @@ export const api = {
   ): Promise<{ success: boolean; alert: StockAlert }> {
     const res = await fetch(`${API_BASE}/alerts/${id}/acknowledge`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
       body: JSON.stringify({ actor }),
     });
     if (!res.ok) throw new Error('Failed to acknowledge alert');
@@ -289,13 +289,13 @@ export const api = {
   },
 
   async getActivityLog(): Promise<{ success: boolean; movements: StockMovement[] }> {
-    const res = await fetch(`${API_BASE}/activity-log`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/activity-log`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch activity log');
     return res.json();
   },
 
   async getValidation(): Promise<ValidationSummaryResponse> {
-    const res = await fetch(`${API_BASE}/validation`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/validation`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch validation issues');
     return res.json();
   },
@@ -313,13 +313,13 @@ export const api = {
     if (branchId) query.set('branchId', branchId);
     if (actor) query.set('actor', actor);
 
-    const res = await fetch(`${API_BASE}/reports/monthly?${query.toString()}`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/reports/monthly?${query.toString()}`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch monthly report');
     return res.json();
   },
 
   async getWarehouse(): Promise<{ success: boolean; warehouse: WarehouseInventory | null; mode?: string; notice?: string }> {
-    const res = await fetch(`${API_BASE}/warehouse`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/warehouse`, { headers: await getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch warehouse stock');
     return res.json();
   },
@@ -327,7 +327,7 @@ export const api = {
   async resetDatabase(): Promise<{ success: boolean; message: string; branchesCount: number }> {
     const res = await fetch(`${API_BASE}/database/reset`, {
       method: 'POST',
-      headers: getHeaders(),
+      headers: await getHeaders(),
     });
     const result = await res.json();
     if (!res.ok) throw new Error(result.error || 'Failed to reset database');
