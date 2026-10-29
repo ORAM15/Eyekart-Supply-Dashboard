@@ -87,6 +87,9 @@ async function getProfile(req: Request) {
   if (!["ADMIN", "RECEPTIONIST", "BRANCH_USER"].includes(profile.role)) {
     throw new ApiError(403, "INVALID_ROLE", "This account does not have an approved EyeKart role.");
   }
+  if (profile.role === "BRANCH_USER" && !profile.assigned_branch_id) {
+    throw new ApiError(403, "BRANCH_NOT_ASSIGNED", "This branch account has no assigned branch. Ask an administrator to assign one.");
+  }
   return profile;
 }
 
@@ -254,7 +257,9 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
   }
 
   if (path === "branches" && method === "GET") {
-    const { data, error } = await client.from("branches").select("*").eq("is_active", true).order("srn");
+    let query = client.from("branches").select("*").eq("is_active", true).order("srn");
+    if (profile.role === "BRANCH_USER") query = query.eq("id", profile.assigned_branch_id);
+    const { data, error } = await query;
     if (error) throw new ApiError(503, "DATABASE_READ_FAILED", "Could not load branch inventory.");
     const branches = (data ?? []).map(branchDto);
     return { success: true, branches, totalCount: branches.length, mode: "LIVE_CRUD" };
@@ -526,7 +531,9 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
   }
 
   if (path === "validation" && method === "GET") {
-    const { data, error } = await client.from("branches").select("*").eq("is_active", true);
+    let query = client.from("branches").select("*").eq("is_active", true);
+    if (profile.role === "BRANCH_USER") query = query.eq("id", profile.assigned_branch_id);
+    const { data, error } = await query;
     if (error) throw new ApiError(503, "VALIDATION_FAILED", "Could not verify inventory totals.");
     const rows = data ?? [];
     const totals = rows.reduce((s: any, b: any) => ({
@@ -625,7 +632,7 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
     if (note.length < 3) throw new ApiError(400,"AUDIT_REASON_REQUIRED","A reason of at least 3 characters is required.");
     const { error } = await client.rpc("adjust_branch_stock", {
       p_branch_id: row.id,p_male:q.male,p_female:q.female,p_kids:q.kids,
-      p_note:note,p_actor_user_id:profile.id,p_actor_name:profile.display_name,
+      p_note:note,p_actor_user_id:profile.id,p_actor_name:profile.display_name,p_expected_updated_at:row.updated_at,
     });
     if (error) throw new ApiError(400,"STOCK_UPDATE_FAILED","Stock adjustment failed; no partial update was committed.");
     return { success:true,branch:branchDto(await oneBranch(row.id)),mode:"LIVE_CRUD" };
