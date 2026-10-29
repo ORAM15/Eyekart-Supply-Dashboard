@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 export const InventoryView: React.FC = () => {
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
   const { branches, warehouse, currentUser, adjustStock } = useApp();
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>(branches[0]?.id || '');
@@ -73,8 +74,10 @@ export const InventoryView: React.FC = () => {
           </div>
 
           <div className="text-3xl font-black text-teal-400 mb-1">
-            {warehouse ? warehouse.totalOnHand.toLocaleString() : '11,000'}{' '}
-            <span className="text-xs font-normal text-slate-300">frames available</span>
+            {warehouse ? warehouse.totalOnHand.toLocaleString() : 'Not verified'}
+            <span className="text-xs font-normal text-slate-300">
+              {warehouse ? 'frames available' : 'warehouse stock not verified'}
+            </span>
           </div>
           <p className="text-xs text-slate-400 mb-5">
             Central supplier stock from which approved retail counter orders are dispatched.
@@ -84,19 +87,19 @@ export const InventoryView: React.FC = () => {
             <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Male</span>
               <div className="text-base font-bold text-white mt-1">
-                {warehouse?.maleOnHand.toLocaleString() || '4,500'}
+                {warehouse ? warehouse.maleOnHand.toLocaleString() : '—'}
               </div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Female</span>
               <div className="text-base font-bold text-white mt-1">
-                {warehouse?.femaleOnHand.toLocaleString() || '4,500'}
+                {warehouse ? warehouse.femaleOnHand.toLocaleString() : '—'}
               </div>
             </div>
             <div className="bg-slate-800/80 p-3 rounded-xl border border-slate-700">
               <span className="text-[10px] text-slate-400 uppercase font-semibold">Kids</span>
               <div className="text-base font-bold text-white mt-1">
-                {warehouse?.kidsOnHand.toLocaleString() || '2,000'}
+                {warehouse ? warehouse.kidsOnHand.toLocaleString() : '—'}
               </div>
             </div>
           </div>
@@ -142,7 +145,7 @@ export const InventoryView: React.FC = () => {
       </div>
 
       {/* Admin Manual Adjustment Module */}
-      {currentUser.role === 'ADMIN' && (
+      {currentUser.role === 'ADMIN' && !isSnapshotMode && (
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center space-x-2">
             <Sliders className="w-5 h-5 text-slate-700" />

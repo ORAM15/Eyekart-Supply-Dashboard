@@ -1519,7 +1519,7 @@ async function startServer() {
     res.status(500).json({ success: false, error: err?.message || 'Internal server error' });
   });
 
-  const port = 3000;
+  const port = Number(process.env.PORT) || 3000;
   app.listen(port, '0.0.0.0', () => {
     console.log(`[Eyekart System] Production Server running on port ${port}`);
   });

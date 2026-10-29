@@ -17,6 +17,7 @@ import {
 } from 'lucide-react';
 
 export const DashboardView: React.FC = () => {
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
   const {
     branches,
     orders,
@@ -65,14 +66,18 @@ export const DashboardView: React.FC = () => {
             Eyewear Stock & Branch Order Control
           </h2>
           <p className="text-slate-300 text-xs mt-1 max-w-xl">
-            Live multi-category frame balances across all 35 counter outlets. Real-time order dispatch, atomic delivery receipt, and low-stock protection.
+            {isSnapshotMode
+              ? 'Read-only SSD Frame List starting-stock baseline. Orders, warehouse balances, and transaction history are not connected.'
+              : 'Branch balances from the configured API. Verify live API health and authentication before performing stock operations.'}
           </p>
         </div>
 
         <div className="flex items-center space-x-3 shrink-0">
           <button
-            onClick={() => openOrderDrawer()}
-            className="flex items-center space-x-2 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs py-2.5 px-4 rounded-xl shadow-md transition-all active:scale-95"
+            onClick={() => { if (!isSnapshotMode) openOrderDrawer(); }}
+            disabled={isSnapshotMode}
+            title={isSnapshotMode ? 'Orders are disabled in read-only snapshot mode' : 'Create a frame order'}
+            className="flex items-center space-x-2 bg-teal-500 hover:bg-teal-400 text-slate-950 font-bold text-xs py-2.5 px-4 rounded-xl shadow-md transition-all active:scale-95 disabled:opacity-40 disabled:cursor-not-allowed"
           >
             <PlusCircle className="w-4 h-4" />
             <span>Create Frame Order</span>
@@ -371,7 +376,7 @@ export const DashboardView: React.FC = () => {
           </div>
 
           <div className="mt-4 pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-            <span>Central Warehouse Stock: {warehouse?.totalOnHand.toLocaleString()} frames</span>
+            <span>Central Warehouse Stock: {warehouse ? warehouse.totalOnHand.toLocaleString() + ' frames' : 'Not verified'}</span>
             <button
               onClick={() => setActiveTab('inventory')}
               className="text-teal-700 font-semibold hover:underline"

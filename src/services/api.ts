@@ -9,7 +9,11 @@ import type {
   StockCategory,
 } from '../types/index.js';
 
-const API_BASE = '/api';
+// Snapshot mode remains the default even if an API URL is configured. Only route browser requests
+// directly to a separate live API after the production auth/database gates have been reviewed.
+const API_BASE = import.meta.env.VITE_EYEKART_LIVE_MODE === 'true' && import.meta.env.VITE_API_BASE_URL
+  ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')
+  : '/api';
 
 export interface ValidationSummaryResponse {
   success: boolean;
@@ -311,7 +315,7 @@ export const api = {
     return res.json();
   },
 
-  async getWarehouse(): Promise<{ success: boolean; warehouse: WarehouseInventory }> {
+  async getWarehouse(): Promise<{ success: boolean; warehouse: WarehouseInventory | null; mode?: string; notice?: string }> {
     const res = await fetch(`${API_BASE}/warehouse`, { headers: getHeaders() });
     if (!res.ok) throw new Error('Failed to fetch warehouse stock');
     return res.json();
