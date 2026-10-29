@@ -101,7 +101,8 @@ interface AppContextType {
     branchId: string,
     category: StockCategory,
     newQuantity: number,
-    reason: string
+    reason: string,
+    expectedUpdatedAt?: string
   ) => Promise<void>;
   updateBranchThreshold: (branchId: string, minThreshold: number) => Promise<void>;
   verifyBranchName: (branchId: string, canonicalName?: string) => Promise<void>;
@@ -315,7 +316,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode; initialUser?: Us
     branchId: string,
     category: StockCategory,
     newQuantity: number,
-    reason: string
+    reason: string,
+    expectedUpdatedAt?: string
   ) => {
     try {
       await api.adjustInventory({
@@ -324,6 +326,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode; initialUser?: Us
         newQuantity,
         reason,
         actor: currentUser.name,
+        expectedUpdatedAt,
       });
       showToast('success', `Inventory balance updated with audit log entry.`);
       await refreshData();
