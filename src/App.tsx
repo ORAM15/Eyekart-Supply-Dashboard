@@ -1,5 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { AppProvider, useApp } from './context/AppContext.js';
+import { AuthGate } from './components/auth/AuthGate.js';
+import { isLiveCrudConfigured, signOutFromSupabase } from './services/auth.js';
 import { CounterCard } from './components/counters/CounterCard.js';
 import { CounterStockModal } from './components/counters/CounterStockModal.js';
 import { LowStockAlertsBanner } from './components/notifications/LowStockAlertsBanner.js';
@@ -17,10 +19,11 @@ import {
   Layers,
   Sparkles,
   RefreshCw,
+  LogOut,
 } from 'lucide-react';
 
 const ReceptionistDashboard: React.FC = () => {
-  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
+  const isSnapshotMode = !isLiveCrudConfigured();
   const {
     branches,
     loading,
@@ -185,6 +188,24 @@ const ReceptionistDashboard: React.FC = () => {
                 <FileText className="w-4 h-4" />
                 <span>Monthly Report</span>
               </button>
+
+              {isLiveCrudConfigured() && (
+                <div className="flex items-center gap-2 sm:ml-2 border border-slate-200 rounded-xl px-3 py-2 bg-white">
+                  <div className="min-w-0">
+                    <p className="text-xs font-extrabold text-slate-800 truncate max-w-[150px]">{currentUser.name}</p>
+                    <p className="text-[10px] font-semibold text-teal-700">{currentUser.role.replace('_', ' ')}</p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => { void signOutFromSupabase(); }}
+                    title="Sign out of EyeKart"
+                    aria-label="Sign out of EyeKart"
+                    className="p-2 rounded-lg text-slate-500 hover:bg-rose-50 hover:text-rose-700"
+                  >
+                    <LogOut className="w-4 h-4" />
+                  </button>
+                </div>
+              )}
             </div>
 
           </div>
@@ -362,6 +383,18 @@ const ReceptionistDashboard: React.FC = () => {
 };
 
 export default function App() {
+  if (isLiveCrudConfigured()) {
+    return (
+      <AuthGate>
+        {(user) => (
+          <AppProvider initialUser={user}>
+            <ReceptionistDashboard />
+          </AppProvider>
+        )}
+      </AuthGate>
+    );
+  }
+
   return (
     <AppProvider>
       <ReceptionistDashboard />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { useApp } from '../context/AppContext.js';
+import { isLiveCrudConfigured } from '../services/auth.js';
 import {
   Building2,
   Boxes,
@@ -17,7 +18,7 @@ import {
 } from 'lucide-react';
 
 export const DashboardView: React.FC = () => {
-  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
+  const isSnapshotMode = !isLiveCrudConfigured();
   const {
     branches,
     orders,

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { useApp } from '../context/AppContext.js';
+import { isLiveCrudConfigured } from '../services/auth.js';
 import type { StockCategory } from '../types/index.js';
 import {
   Boxes,
@@ -13,7 +14,7 @@ import {
 } from 'lucide-react';
 
 export const InventoryView: React.FC = () => {
-  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
+  const isSnapshotMode = !isLiveCrudConfigured();
   const { branches, warehouse, currentUser, adjustStock } = useApp();
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>(branches[0]?.id || '');
@@ -34,7 +35,7 @@ export const InventoryView: React.FC = () => {
 
     setAdjusting(true);
     try {
-      await adjustStock(selectedBranch.id, category, newQty, reason);
+      await adjustStock(selectedBranch.id, category, newQty, reason, selectedBranch.updatedAt);
       setReason('');
     } finally {
       setAdjusting(false);
