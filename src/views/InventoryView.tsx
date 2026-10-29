@@ -35,7 +35,7 @@ export const InventoryView: React.FC = () => {
 
     setAdjusting(true);
     try {
-      await adjustStock(selectedBranch.id, category, newQty, reason);
+      await adjustStock(selectedBranch.id, category, newQty, reason, selectedBranch.updatedAt);
       setReason('');
     } finally {
       setAdjusting(false);
