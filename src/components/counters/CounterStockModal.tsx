@@ -122,6 +122,7 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
         female,
         kids,
         note: note.trim(),
+        expectedUpdatedAt: branch.updatedAt,
       });
 
       setSuccessMessage(
