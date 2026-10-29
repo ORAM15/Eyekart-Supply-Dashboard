@@ -1,6 +1,6 @@
 # EyeKart Supply Dashboard — Repair and Release Plan
 
-Status: the read-only API repair has been merged to `main` and deployed to Vercel Production (deployment commit `c89e6a5fddd9aa516ae3947d226e6ffcb1e620b0`, Ready). Live checks confirm the production `/api/*` routes now return valid responses instead of the original missing-route 404. The production app is in **READ_ONLY_SNAPSHOT** mode; this fixes the sync issue but is **not a live stock-management backend** because write operations remain disabled until verified authentication and durable storage are in place.
+Status: the read-only API repair and counter detail UI fix are merged to `main` and deployed to Vercel Production (latest UI deployment commit `73e441532458bc69c18d31a48ce1c0ed1abe1000`, Ready). Live checks confirm the production `/api/*` read routes no longer return the original missing-route 404. Counter cards can open the detail modal and the +/− controls edit draft quantities. The app remains in **READ_ONLY_SNAPSHOT** mode; stock adjustments cannot be saved until verified authentication and durable storage are implemented.
 
 ## Root cause
 
@@ -45,6 +45,16 @@ The original `data/eyekart_db.json` has **not** been overwritten. The owner conf
 
 This fallback is a **safe bridge** to fix the missing API routes and give the UI verified baseline data. It is not a live operational backend: data are snapshot-only, and changes are intentionally disabled. The Vercel site must not be used as the live stock-management system until the security/persistence gates below are completed.
 
+## Counter detail and +/- interaction fix (2026-10-30)
+
+Production was further updated after the user reported counters would not open:
+- Removed the `isSnapshotMode` guard that had prevented every counter-card click from opening the counter detail modal.
+- The three category +/− controls and number inputs now remain interactive inside that modal and update the displayed draft totals.
+- Added an in-modal warning stating that these are preview adjustments only and do not change official branch balances.
+- Disabled the misleading Save button in snapshot mode and changed its label to explain why saving is unavailable; a code path also refuses to send a write request when snapshot mode is active.
+- GitHub Actions passed type-check, read-only API smoke tests and the Vite build. Vercel Production is Ready on commit `73e441532458bc69c18d31a48ce1c0ed1abe1000`. Live page and JavaScript bundle return HTTP 200; the deployed bundle contains the counter modal, +/− accessibility labels, preview-only warning and disabled-save label.
+
+**Boundary:** the requested interaction bug is fixed in production. The +/− buttons adjust values in the open modal only. Save/persistence is intentionally not enabled because the current API rejects mutations and no verified identity provider/database is configured. Closing the modal discards draft changes. Do not treat a preview adjustment as an operational stock movement.
 ## Recent deployment-readiness changes
 
 - `npm start` runs `tsx server.ts`.
@@ -71,7 +81,7 @@ This fallback is a **safe bridge** to fix the missing API routes and give the UI
 - GitHub CI type-check, API smoke test and Vite build passed on the merged implementation.
 - Vercel Production deployment reports Ready on commit `c89e6a5fddd9aa516ae3947d226e6ffcb1e620b0`.
 - Direct production HTTP checks: `/` 200; `/api/health` 200; `/api/branches` 200; `/api/branches/br-008` 200; `/api/branches/br-010` 200; `/api/reports/monthly?month=10&year=2026` 200; `/api/warehouse` 200 with `warehouse: null`; `/api/orders` and `/api/activity-log` 200 with empty arrays; `/api/validation` 200 and reconciled.
-- Production JS bundle includes the read-only warning and demo-role disclaimer and no longer includes made-up warehouse counts.
+- Production JS bundle includes the read-only warning and demo-role disclaimer, no made-up warehouse counts, and the counter modal with preview-only +/- controls and an explicit disabled-save state.
 - Tests assert all mutation handlers return HTTP 503 with `READ_ONLY_SNAPSHOT`; the live preview and production endpoints have been checked for the read paths.
 - Configure authenticated persistent production backend before removing read-only mode.
 
