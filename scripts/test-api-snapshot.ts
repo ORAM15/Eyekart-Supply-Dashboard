@@ -4,24 +4,31 @@ import handler from '../api/[...path].ts';
 function invoke(method: string, url: string): Promise<{ status: number; body: any }> {
   return new Promise((resolve, reject) => {
     const req = { method, url } as IncomingMessage;
-    const response = {
+    const mock: {
+      statusCode: number;
+      headers: Record<string, string>;
+      setHeader(name: string, value: string): void;
+      end(payload?: string): void;
+    } = {
       statusCode: 200,
-      headers: {} as Record<string, string>,
-      setHeader(name: string, value: string) { this.headers[name] = value; },
-      end(payload?: string) {
+      headers: {},
+      setHeader(name, value) {
+        mock.headers[name] = value;
+      },
+      end(payload) {
         try {
           resolve({
-            status: this.statusCode,
+            status: mock.statusCode,
             body: payload ? JSON.parse(payload) : null,
           });
         } catch (error) {
           reject(error);
         }
       },
-    } as unknown as ServerResponse;
+    };
 
     try {
-      handler(req, response);
+      handler(req, mock as unknown as ServerResponse);
     } catch (error) {
       reject(error);
     }
