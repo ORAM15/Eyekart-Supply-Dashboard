@@ -192,7 +192,17 @@ const ReceptionistDashboard: React.FC = () => {
 
       {/* MAIN CONTENT AREA */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        
+        {!import.meta.env.VITE_API_BASE_URL && (
+          <div role="status" className="mb-5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950 shadow-sm">
+            <div className="font-extrabold uppercase tracking-wide">Read-only snapshot mode</div>
+            <p className="mt-1">
+              Branch figures use the SSD Frame List baseline (3,740 frames). Warehouse stock and transaction history are not verified in this snapshot.
+              Stock edits, orders, and admin actions are blocked until a secure, persistent backend is connected. The role switcher is a demo control, not authentication.
+              Do not use this preview for live stock operations.
+            </p>
+          </div>
+        )}
+
         {/* Loading State */}
         {loading ? (
           <div className="py-24 flex flex-col items-center justify-center space-y-3">
