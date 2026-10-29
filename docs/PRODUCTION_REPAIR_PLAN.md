@@ -59,3 +59,19 @@ Status: investigation only. No application behavior, inventory data, or producti
 ## Current decision
 
 No authoritative production database has been confirmed beyond the repository JSON being the user's stated candidate source of truth. No migration, database creation, inventory overwrite, production deployment, or changes to `main` are authorized by this plan.
+
+## Follow-up read-only data audit (2026-10-30)
+
+The repository data file and seed records were inspected without writing either file.
+
+- The JSON parses and contains 35 branches, 4 orders, 52 movements, 5 alerts, 6 validation issues, 5 warehouse entries, and 3 user records.
+- Branch IDs and SRNs are unique. One branch name remains flagged as anomalous/unverified.
+- The seed data's validation note says the source spreadsheet reconciled to 3,740 frames (Male 1,500; Female 1,830; Kids 410). The current JSON branch inventory sums to 3,719 (Male 1,490; Female 1,810; Kids 419): a net difference of -21 frames, with category deltas of -10, -20, and +9. This is a material reconciliation gap; do not treat either total as the current physical truth without source records.
+- The JSON contains recent orders and movement entries dated 2026-10-29, including received/submitted/draft orders. These may represent actual activity or test activity; their legitimacy cannot be inferred from the repository alone.
+- The three user entries are application seed identities, not proof of authenticated real users. No credentials or verified identity provider were found in the inspected setup.
+- The warehouse values in the JSON must also be checked against a current warehouse count and source records before migration.
+
+### Gate A decision: blocked pending owner verification
+
+Do not migrate, reset, normalize, or deploy writes against this data yet. Ask the business owner to identify the authoritative current inventory/source spreadsheet and confirm whether the 2026-10-29 orders and movements are genuine operational transactions or test records. Preserve the JSON unchanged until that reconciliation is complete.
+
