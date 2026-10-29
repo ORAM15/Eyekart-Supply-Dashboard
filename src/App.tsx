@@ -20,7 +20,7 @@ import {
 } from 'lucide-react';
 
 const ReceptionistDashboard: React.FC = () => {
-  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL;
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
   const {
     branches,
     loading,
@@ -193,7 +193,7 @@ const ReceptionistDashboard: React.FC = () => {
 
       {/* MAIN CONTENT AREA */}
       <main className="flex-1 max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6">
-        {!import.meta.env.VITE_API_BASE_URL && (
+        {isSnapshotMode && (
           <div role="status" className="mb-5 rounded-xl border border-amber-300 bg-amber-50 px-4 py-3 text-sm text-amber-950 shadow-sm">
             <div className="font-extrabold uppercase tracking-wide">Read-only snapshot mode</div>
             <p className="mt-1">
