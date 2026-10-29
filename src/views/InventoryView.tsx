@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 
 export const InventoryView: React.FC = () => {
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL;
   const { branches, warehouse, currentUser, adjustStock } = useApp();
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>(branches[0]?.id || '');
@@ -144,7 +145,7 @@ export const InventoryView: React.FC = () => {
       </div>
 
       {/* Admin Manual Adjustment Module */}
-      {currentUser.role === 'ADMIN' && (
+      {currentUser.role === 'ADMIN' && !isSnapshotMode && (
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center space-x-2">
             <Sliders className="w-5 h-5 text-slate-700" />
