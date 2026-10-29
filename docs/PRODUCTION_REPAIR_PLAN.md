@@ -1,6 +1,6 @@
 # EyeKart Supply Dashboard — Repair and Release Plan
 
-Status: repair is isolated to `repair/production-backend`. Vercel Preview is **Ready**, GitHub Actions type-check/API smoke test/Vite build passed, and live preview requests confirmed the API routes. This fixes API sync in the verified preview. The preview remains a read-only snapshot and is **not a live stock-management backend**. Production is still on the old deployment until this PR is merged.
+Status: the read-only API repair has been merged to `main` and deployed to Vercel Production (deployment commit `c89e6a5fddd9aa516ae3947d226e6ffcb1e620b0`, Ready). Live checks confirm the production `/api/*` routes now return valid responses instead of the original missing-route 404. The production app is in **READ_ONLY_SNAPSHOT** mode; this fixes the sync issue but is **not a live stock-management backend** because write operations remain disabled until verified authentication and durable storage are in place.
 
 ## Root cause
 
@@ -31,7 +31,7 @@ The reproducible row-level transcription/comparison is in `docs/SSD_FRAME_LIST_R
 
 The original `data/eyekart_db.json` has **not** been overwritten. The owner confirmed its October 29 orders/movements are demo transactions. Those records are excluded from the read-only API; activity log and orders are currently empty. Warehouse stock is not established by the screenshot and is deliberately returned as unknown/null rather than invented.
 
-## Vercel API fallback added (isolated branch only)
+## Vercel API fallback deployed to Production (read-only mode)
 
 - `api/[...path].ts` provides Vercel function routes for top-level API endpoints.
 - Live preview verification initially exposed missing nested route matches (e.g. `/api/branches/br-008` and `/api/reports/monthly` returned Vercel `NOT_FOUND`). Added explicit Vercel handlers for branch details, monthly report and nested branch/order/alert/inventory actions. Re-tested preview: branch details and monthly report now return 200; nested action paths invoke the shared handler rather than Vercel `NOT_FOUND`.
@@ -68,11 +68,12 @@ This fallback is a **safe bridge** to fix the missing API routes and give the UI
 - Keep the existing JSON as an audit snapshot and stage a separate dry-run import. Do not update stock until reviewed.
 
 ### Deployment and verification
-- GitHub CI type-check, API smoke test and Vite build passed. Re-run after any further application edits.
-- Vercel Preview deployment status reports Ready. Still verify `/api/health`, `/api/branches`, `/api/validation`, plus 503 on mutations from a browser that can access the protected Preview deployment.
-- Confirm the dashboard no longer shows the connection error and shows the read-only banner.
+- GitHub CI type-check, API smoke test and Vite build passed on the merged implementation.
+- Vercel Production deployment reports Ready on commit `c89e6a5fddd9aa516ae3947d226e6ffcb1e620b0`.
+- Direct production HTTP checks: `/` 200; `/api/health` 200; `/api/branches` 200; `/api/branches/br-008` 200; `/api/branches/br-010` 200; `/api/reports/monthly?month=10&year=2026` 200; `/api/warehouse` 200 with `warehouse: null`; `/api/orders` and `/api/activity-log` 200 with empty arrays; `/api/validation` 200 and reconciled.
+- Production JS bundle includes the read-only warning and demo-role disclaimer and no longer includes made-up warehouse counts.
+- Tests assert all mutation handlers return HTTP 503 with `READ_ONLY_SNAPSHOT`; the live preview and production endpoints have been checked for the read paths.
 - Configure authenticated persistent production backend before removing read-only mode.
-- Do not merge, deploy as production, or change `main` until reviewed and explicitly approved.
 
 ## State of truth
 
