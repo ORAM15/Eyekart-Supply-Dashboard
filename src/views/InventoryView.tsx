@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 export const InventoryView: React.FC = () => {
-  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL;
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
   const { branches, warehouse, currentUser, adjustStock } = useApp();
 
   const [selectedBranchId, setSelectedBranchId] = useState<string>(branches[0]?.id || '');
