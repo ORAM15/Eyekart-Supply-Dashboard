@@ -114,7 +114,7 @@ interface AppContextType {
   acknowledgeAlert: (alertId: string) => Promise<void>;
   updateCounterStock: (
     branchId: string,
-    data: { male: number; female: number; kids: number; note?: string }
+    data: { male: number; female: number; kids: number; note?: string; expectedUpdatedAt?: string }
   ) => Promise<{ success: boolean; branch: Branch; message: string }>;
   resetDatabase: () => Promise<void>;
 }
