@@ -9,7 +9,9 @@ import type {
   StockCategory,
 } from '../types/index.js';
 
-const API_BASE = '/api';
+// VITE_API_BASE_URL should be the separately deployed Express API origin in production.
+// Leave empty for same-origin development/proxy setups. Example: https://api.example.com/api
+const API_BASE = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '');
 
 export interface ValidationSummaryResponse {
   success: boolean;
