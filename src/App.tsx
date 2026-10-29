@@ -323,7 +323,7 @@ const ReceptionistDashboard: React.FC = () => {
                     key={item.branch.id}
                     counterNumber={item.counterNumber}
                     branch={item.branch}
-                    onClick={() => { if (!isSnapshotMode) setSelectedCounterIndex(item.index); }}
+                    onClick={() => setSelectedCounterIndex(item.index)}
                   />
                 ))}
               </div>

@@ -28,6 +28,7 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
   onClose,
 }) => {
   const { updateCounterStock, refreshData } = useApp();
+  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
 
   // Local state for stock quantities
   const [male, setMale] = useState<number>(branch.inventory.male.onHand);
@@ -106,6 +107,11 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
     setSuccessMessage(null);
 
     try {
+      if (isSnapshotMode) {
+        setErrorMessage('This deployment is read-only. Your +/− edits are only a preview and were not saved. Connect a secure authenticated database before recording stock changes.');
+        return;
+      }
+
       const res = await updateCounterStock(branch.id, {
         male,
         female,
@@ -184,7 +190,15 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
 
         {/* Scrollable Content Body */}
         <div className="p-5 sm:p-7 overflow-y-auto space-y-6 flex-1">
-          
+          {isSnapshotMode && (
+            <div role="status" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
+              <p className="font-extrabold uppercase tracking-wide">Preview adjustments only</p>
+              <p className="mt-1 text-xs leading-relaxed">
+                The +/− buttons and quantity fields update this counter preview. Saving is unavailable because the production API is currently read-only. These draft numbers will not change the official branch stock or survive closing this window.
+              </p>
+            </div>
+          )}
+
           {/* Success Message Banner */}
           {successMessage && (
             <div className="p-4 bg-emerald-50 border-2 border-emerald-300 rounded-2xl flex items-start gap-3 text-emerald-900 animate-in fade-in">
@@ -415,8 +429,9 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
             <button
               type="button"
               onClick={handleSave}
-              disabled={saving}
-              className="w-full sm:flex-1 py-4 px-6 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 disabled:bg-teal-400 text-white font-extrabold text-base rounded-2xl shadow-lg shadow-teal-700/20 flex items-center justify-center gap-2 transition-all"
+              disabled={saving || isSnapshotMode}
+              title={isSnapshotMode ? 'Saving is disabled in read-only snapshot mode' : 'Save stock changes'}
+              className="w-full sm:flex-1 py-4 px-6 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-extrabold text-base rounded-2xl shadow-lg shadow-teal-700/20 flex items-center justify-center gap-2 transition-all"
             >
               {saving ? (
                 <>
@@ -426,7 +441,7 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
               ) : (
                 <>
                   <Save className="w-5 h-5" />
-                  <span>Save Stock Changes</span>
+                  <span>{isSnapshotMode ? 'Saving Disabled — Read-Only Mode' : 'Save Stock Changes'}</span>
                 </>
               )}
             </button>
