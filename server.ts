@@ -573,6 +573,101 @@ async function startServer() {
     res.json({ success: true, branch });
   });
 
+  // POST /api/branches/:id/stock (Receptionist & Admin - quick stock adjustment with audit)
+  app.post('/api/branches/:id/stock', async (req, res) => {
+    const state = loadDatabase();
+    const branch = state.branches.find((b) => b.id === req.params.id);
+    if (!branch) {
+      return res.status(404).json({ success: false, error: 'Counter / Branch not found' });
+    }
+
+    const { male, female, kids, note, actor = 'Sarah Wanjiku' } = req.body;
+
+    const m = Math.max(0, parseInt(male ?? branch.inventory.male.onHand, 10));
+    const f = Math.max(0, parseInt(female ?? branch.inventory.female.onHand, 10));
+    const k = Math.max(0, parseInt(kids ?? branch.inventory.kids.onHand, 10));
+
+    if (isNaN(m) || isNaN(f) || isNaN(k)) {
+      return res.status(400).json({ success: false, error: 'Invalid frame quantities provided. Values must be numbers.' });
+    }
+
+    const prevCategoryOnHand = {
+      male: branch.inventory.male.onHand,
+      female: branch.inventory.female.onHand,
+      kids: branch.inventory.kids.onHand,
+    };
+
+    const diffMale = m - prevCategoryOnHand.male;
+    const diffFemale = f - prevCategoryOnHand.female;
+    const diffKids = k - prevCategoryOnHand.kids;
+
+    const now = new Date().toISOString();
+
+    // Update branch balances
+    branch.inventory.male.onHand = m;
+    branch.inventory.male.available = Math.max(0, m - branch.inventory.male.reserved);
+    branch.inventory.female.onHand = f;
+    branch.inventory.female.available = Math.max(0, f - branch.inventory.female.reserved);
+    branch.inventory.kids.onHand = k;
+    branch.inventory.kids.available = Math.max(0, k - branch.inventory.kids.reserved);
+    branch.inventory.totalOnHand = m + f + k;
+    branch.inventory.totalAvailable = branch.inventory.totalOnHand;
+    branch.status = computeStatus(branch.inventory.totalOnHand, branch.minThreshold);
+    branch.lastStockMovementAt = now;
+    branch.updatedAt = now;
+
+    // Log movements for each category changed
+    const categories: Array<{ name: 'male' | 'female' | 'kids'; diff: number; prev: number; curr: number }> = [
+      { name: 'male', diff: diffMale, prev: prevCategoryOnHand.male, curr: m },
+      { name: 'female', diff: diffFemale, prev: prevCategoryOnHand.female, curr: f },
+      { name: 'kids', diff: diffKids, prev: prevCategoryOnHand.kids, curr: k },
+    ];
+
+    const loggedMovements: StockMovement[] = [];
+
+    categories.forEach((cat) => {
+      if (cat.diff !== 0) {
+        const catLabel = cat.name === 'male' ? 'Male' : cat.name === 'female' ? 'Female' : 'Kids';
+        const mvt: StockMovement = {
+          id: `mvt-${Date.now()}-${Math.random().toString(36).slice(2, 6)}`,
+          timestamp: now,
+          branchId: branch.id,
+          branchName: branch.name,
+          movementType: 'MANUAL_ADJUSTMENT',
+          category: cat.name,
+          previousOnHand: cat.prev,
+          quantityChanged: cat.diff,
+          resultingOnHand: cat.curr,
+          maleChanged: cat.name === 'male' ? cat.diff : 0,
+          femaleChanged: cat.name === 'female' ? cat.diff : 0,
+          kidsChanged: cat.name === 'kids' ? cat.diff : 0,
+          previousCategoryOnHand: prevCategoryOnHand,
+          resultingCategoryOnHand: {
+            male: m,
+            female: f,
+            kids: k,
+          },
+          actor,
+          reason: note && note.trim()
+            ? `${note.trim()} (${cat.diff > 0 ? '+' : ''}${cat.diff} ${catLabel})`
+            : `Counter stock adjusted: ${cat.diff > 0 ? '+' : ''}${cat.diff} ${catLabel} frames`,
+        };
+        state.movements.unshift(mvt);
+        loggedMovements.push(mvt);
+      }
+    });
+
+    syncAlerts(state);
+    await persistDb();
+
+    res.json({
+      success: true,
+      branch,
+      movements: loggedMovements,
+      message: 'Stock updated successfully',
+    });
+  });
+
   // GET /api/orders
   app.get('/api/orders', (req, res) => {
     const state = loadDatabase();

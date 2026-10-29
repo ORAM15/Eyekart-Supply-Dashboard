@@ -111,6 +111,10 @@ interface AppContextType {
     allowDuplicateOverride?: boolean
   ) => Promise<boolean>;
   acknowledgeAlert: (alertId: string) => Promise<void>;
+  updateCounterStock: (
+    branchId: string,
+    data: { male: number; female: number; kids: number; note?: string }
+  ) => Promise<{ success: boolean; branch: Branch; message: string }>;
   resetDatabase: () => Promise<void>;
 }
 
@@ -394,6 +398,24 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     }
   };
 
+  const updateCounterStock = async (
+    branchId: string,
+    data: { male: number; female: number; kids: number; note?: string }
+  ) => {
+    try {
+      const res = await api.updateCounterStock(branchId, {
+        ...data,
+        actor: currentUser.name,
+      });
+      showToast('success', res.message || 'Counter stock updated successfully.');
+      await refreshData();
+      return res;
+    } catch (err: any) {
+      showToast('error', err.message || 'Failed to update counter stock');
+      throw err;
+    }
+  };
+
   const resetDatabase = async () => {
     try {
       await api.resetDatabase();
@@ -444,6 +466,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         verifyBranchName,
         createBranch,
         acknowledgeAlert,
+        updateCounterStock,
         resetDatabase,
       }}
     >

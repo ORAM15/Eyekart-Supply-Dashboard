@@ -102,6 +102,20 @@ export const api = {
     return result;
   },
 
+  async updateCounterStock(
+    id: string,
+    data: { male: number; female: number; kids: number; note?: string; actor?: string }
+  ): Promise<{ success: boolean; branch: Branch; movements: StockMovement[]; message: string }> {
+    const res = await fetch(`${API_BASE}/branches/${id}/stock`, {
+      method: 'POST',
+      headers: getHeaders(),
+      body: JSON.stringify(data),
+    });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || 'Failed to update stock');
+    return result;
+  },
+
   async verifyBranchName(
     id: string,
     canonicalName?: string

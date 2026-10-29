@@ -190,8 +190,8 @@
         "totalDispatched": 0
       },
       "createdAt": "2026-10-18T09:15:32.691Z",
-      "updatedAt": "2026-10-18T09:15:32.691Z",
-      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+      "updatedAt": "2026-10-29T17:31:03.178Z",
+      "lastStockMovementAt": "2026-10-29T17:31:03.178Z"
     },
     {
       "id": "br-006",
@@ -209,7 +209,7 @@
           "onHand": 40,
           "reserved": 0,
           "available": 40,
-          "pendingRequested": 0,
+          "pendingRequested": 15,
           "approved": 0,
           "dispatched": 0,
           "received": 0
@@ -218,7 +218,7 @@
           "onHand": 50,
           "reserved": 0,
           "available": 50,
-          "pendingRequested": 0,
+          "pendingRequested": 20,
           "approved": 0,
           "dispatched": 0,
           "received": 0
@@ -227,14 +227,14 @@
           "onHand": 10,
           "reserved": 0,
           "available": 10,
-          "pendingRequested": 0,
+          "pendingRequested": 5,
           "approved": 0,
           "dispatched": 0,
           "received": 0
         },
         "totalOnHand": 100,
         "totalAvailable": 100,
-        "totalPendingRequested": 0,
+        "totalPendingRequested": 40,
         "totalDispatched": 0
       },
       "createdAt": "2026-10-18T09:15:32.691Z",
@@ -257,7 +257,7 @@
           "onHand": 40,
           "reserved": 0,
           "available": 40,
-          "pendingRequested": 0,
+          "pendingRequested": 20,
           "approved": 0,
           "dispatched": 0,
           "received": 0
@@ -266,7 +266,7 @@
           "onHand": 50,
           "reserved": 0,
           "available": 50,
-          "pendingRequested": 0,
+          "pendingRequested": 15,
           "approved": 0,
           "dispatched": 0,
           "received": 0
@@ -275,14 +275,14 @@
           "onHand": 10,
           "reserved": 0,
           "available": 10,
-          "pendingRequested": 0,
+          "pendingRequested": 5,
           "approved": 0,
           "dispatched": 0,
           "received": 0
         },
         "totalOnHand": 100,
         "totalAvailable": 100,
-        "totalPendingRequested": 0,
+        "totalPendingRequested": 40,
         "totalDispatched": 0
       },
       "createdAt": "2026-10-18T09:15:32.691Z",
@@ -298,44 +298,44 @@
       "isVerified": true,
       "remarks": "MIX Metals &Plast",
       "minThreshold": 50,
-      "status": "HEALTHY",
+      "status": "LOW_STOCK",
       "isActive": true,
       "inventory": {
         "male": {
-          "onHand": 40,
+          "onHand": 20,
           "reserved": 0,
-          "available": 40,
+          "available": 20,
           "pendingRequested": 0,
           "approved": 0,
           "dispatched": 0,
           "received": 0
         },
         "female": {
-          "onHand": 50,
+          "onHand": 20,
           "reserved": 0,
-          "available": 50,
+          "available": 20,
           "pendingRequested": 0,
           "approved": 0,
           "dispatched": 0,
           "received": 0
         },
         "kids": {
-          "onHand": 10,
+          "onHand": 9,
           "reserved": 0,
-          "available": 10,
+          "available": 9,
           "pendingRequested": 0,
           "approved": 0,
           "dispatched": 0,
           "received": 0
         },
-        "totalOnHand": 100,
-        "totalAvailable": 100,
+        "totalOnHand": 49,
+        "totalAvailable": 49,
         "totalPendingRequested": 0,
         "totalDispatched": 0
       },
       "createdAt": "2026-10-18T09:15:32.691Z",
-      "updatedAt": "2026-10-18T09:15:32.691Z",
-      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+      "updatedAt": "2026-10-29T17:31:03.130Z",
+      "lastStockMovementAt": "2026-10-29T17:31:03.130Z"
     },
     {
       "id": "br-009",
@@ -394,44 +394,44 @@
       "isVerified": true,
       "remarks": "MIX Metals &Plast",
       "minThreshold": 50,
-      "status": "OUT_OF_STOCK",
+      "status": "LOW_STOCK",
       "isActive": true,
       "inventory": {
         "male": {
-          "onHand": 0,
+          "onHand": 10,
           "reserved": 0,
-          "available": 0,
+          "available": 10,
           "pendingRequested": 0,
           "approved": 0,
           "dispatched": 0,
-          "received": 0
+          "received": 10
         },
         "female": {
-          "onHand": 0,
+          "onHand": 10,
           "reserved": 0,
-          "available": 0,
+          "available": 10,
           "pendingRequested": 0,
           "approved": 0,
           "dispatched": 0,
-          "received": 0
+          "received": 10
         },
         "kids": {
-          "onHand": 0,
+          "onHand": 10,
           "reserved": 0,
-          "available": 0,
+          "available": 10,
           "pendingRequested": 0,
           "approved": 0,
           "dispatched": 0,
-          "received": 0
+          "received": 10
         },
-        "totalOnHand": 0,
-        "totalAvailable": 0,
+        "totalOnHand": 30,
+        "totalAvailable": 30,
         "totalPendingRequested": 0,
         "totalDispatched": 0
       },
       "createdAt": "2026-10-18T09:15:32.691Z",
-      "updatedAt": "2026-10-18T09:15:32.691Z",
-      "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
+      "updatedAt": "2026-10-29T17:31:03.156Z",
+      "lastStockMovementAt": "2026-10-29T17:31:03.156Z"
     },
     {
       "id": "br-011",
@@ -1682,8 +1682,613 @@
       "lastStockMovementAt": "2026-10-18T09:15:32.691Z"
     }
   ],
-  "orders": [],
+  "orders": [
+    {
+      "id": "ord-1793295063143-g8et",
+      "orderNumber": "EYE-ORD-202610-0004",
+      "branchId": "br-010",
+      "branchName": "Bliss Iten",
+      "status": "RECEIVED",
+      "requestedItems": {
+        "male": 10,
+        "female": 10,
+        "kids": 10,
+        "total": 30
+      },
+      "requestedBy": "Sarah Wanjiku",
+      "requestedByRole": "RECEPTIONIST",
+      "remarks": "",
+      "timeline": [
+        {
+          "status": "SUBMITTED",
+          "timestamp": "2026-10-29T17:31:03.143Z",
+          "actor": "Sarah Wanjiku",
+          "notes": "Order submitted by receptionist for approval."
+        },
+        {
+          "status": "APPROVED",
+          "timestamp": "2026-10-29T17:31:03.147Z",
+          "actor": "David Kiprop",
+          "notes": "Approved for 30 frames."
+        },
+        {
+          "status": "DISPATCHED",
+          "timestamp": "2026-10-29T17:31:03.151Z",
+          "actor": "David Kiprop",
+          "notes": "Dispatched 30 frames via Test Van"
+        },
+        {
+          "status": "RECEIVED",
+          "timestamp": "2026-10-29T17:31:03.156Z",
+          "actor": "Sarah Wanjiku",
+          "notes": "Delivery confirmed. 30 frames added to branch on-hand stock."
+        }
+      ],
+      "createdAt": "2026-10-29T17:31:03.143Z",
+      "updatedAt": "2026-10-29T17:31:03.156Z",
+      "approvedItems": {
+        "male": 10,
+        "female": 10,
+        "kids": 10,
+        "total": 30
+      },
+      "approvedBy": "David Kiprop",
+      "dispatchedItems": {
+        "male": 10,
+        "female": 10,
+        "kids": 10,
+        "total": 30
+      },
+      "dispatchedBy": "David Kiprop",
+      "courierRef": "Test Van",
+      "receivedItems": {
+        "male": 10,
+        "female": 10,
+        "kids": 10,
+        "total": 30
+      },
+      "receivedBy": "Sarah Wanjiku"
+    },
+    {
+      "id": "ord-1793295063096-lpt1",
+      "orderNumber": "EYE-ORD-202610-0003",
+      "branchId": "br-007",
+      "branchName": "Bliss Embu",
+      "status": "SUBMITTED",
+      "requestedItems": {
+        "male": 20,
+        "female": 15,
+        "kids": 5,
+        "total": 40
+      },
+      "requestedBy": "Sarah Wanjiku",
+      "requestedByRole": "RECEPTIONIST",
+      "remarks": "",
+      "timeline": [
+        {
+          "status": "SUBMITTED",
+          "timestamp": "2026-10-29T17:31:03.096Z",
+          "actor": "Sarah Wanjiku",
+          "notes": "Order submitted by receptionist for approval."
+        }
+      ],
+      "createdAt": "2026-10-29T17:31:03.096Z",
+      "updatedAt": "2026-10-29T17:31:03.096Z"
+    },
+    {
+      "id": "ord-1793295063076-sljw",
+      "orderNumber": "EYE-ORD-202610-0002",
+      "branchId": "br-006",
+      "branchName": "Bliss Embakasi",
+      "status": "SUBMITTED",
+      "requestedItems": {
+        "male": 15,
+        "female": 20,
+        "kids": 5,
+        "total": 40
+      },
+      "requestedBy": "Sarah Wanjiku",
+      "requestedByRole": "RECEPTIONIST",
+      "remarks": "",
+      "timeline": [
+        {
+          "status": "DRAFT",
+          "timestamp": "2026-10-29T17:31:03.076Z",
+          "actor": "Sarah Wanjiku",
+          "notes": "Order saved as draft."
+        },
+        {
+          "status": "SUBMITTED",
+          "timestamp": "2026-10-29T17:31:03.085Z",
+          "actor": "Sarah Wanjiku",
+          "notes": "Draft submitted for approval"
+        }
+      ],
+      "createdAt": "2026-10-29T17:31:03.076Z",
+      "updatedAt": "2026-10-29T17:31:03.085Z"
+    },
+    {
+      "id": "ord-1793295063070-234o",
+      "orderNumber": "EYE-ORD-202610-0001",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "status": "DRAFT",
+      "requestedItems": {
+        "male": 0,
+        "female": 5,
+        "kids": 0,
+        "total": 5
+      },
+      "requestedBy": "Sarah Wanjiku",
+      "requestedByRole": "RECEPTIONIST",
+      "remarks": "",
+      "timeline": [
+        {
+          "status": "DRAFT",
+          "timestamp": "2026-10-29T17:31:03.070Z",
+          "actor": "Sarah Wanjiku",
+          "notes": "Order saved as draft."
+        }
+      ],
+      "createdAt": "2026-10-29T17:31:03.070Z",
+      "updatedAt": "2026-10-29T17:31:03.070Z"
+    }
+  ],
   "movements": [
+    {
+      "id": "mvt-1793295063178",
+      "timestamp": "2026-10-29T17:31:03.178Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "male",
+      "previousOnHand": 150,
+      "quantityChanged": 0,
+      "resultingOnHand": 150,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "David Kiprop",
+      "reason": "Manual stock adjustment: Admin authorized test (+0 male frames)"
+    },
+    {
+      "id": "mvt-1793295063156",
+      "timestamp": "2026-10-29T17:31:03.156Z",
+      "branchId": "br-010",
+      "branchName": "Bliss Iten",
+      "orderId": "ord-1793295063143-g8et",
+      "orderNumber": "EYE-ORD-202610-0004",
+      "movementType": "RECEIPT_AT_BRANCH",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 30,
+      "resultingOnHand": 30,
+      "maleChanged": 10,
+      "femaleChanged": 10,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 10,
+        "female": 10,
+        "kids": 10
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Stock delivery confirmed for order EYE-ORD-202610-0004: +10 Male, +10 Female, +10 Kids"
+    },
+    {
+      "id": "mvt-1793295063151",
+      "timestamp": "2026-10-29T17:31:03.151Z",
+      "branchId": "br-010",
+      "branchName": "Bliss Iten",
+      "orderId": "ord-1793295063143-g8et",
+      "orderNumber": "EYE-ORD-202610-0004",
+      "movementType": "DISPATCH_FROM_WAREHOUSE",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 30,
+      "resultingOnHand": 0,
+      "maleChanged": 10,
+      "femaleChanged": 10,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "actor": "David Kiprop",
+      "reason": "Dispatched 30 frames from Central Warehouse to branch (Ref: Test Van)"
+    },
+    {
+      "id": "mvt-1793295063143",
+      "timestamp": "2026-10-29T17:31:03.143Z",
+      "branchId": "br-010",
+      "branchName": "Bliss Iten",
+      "orderId": "ord-1793295063143-g8et",
+      "orderNumber": "EYE-ORD-202610-0004",
+      "movementType": "ORDER_ALLOCATION",
+      "category": "all",
+      "previousOnHand": 0,
+      "quantityChanged": 0,
+      "resultingOnHand": 0,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "resultingCategoryOnHand": {
+        "male": 0,
+        "female": 0,
+        "kids": 0
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "SUBMITTED order EYE-ORD-202610-0004 created for 30 frames (M:10, F:10, K:10)"
+    },
+    {
+      "id": "mvt-1793295063130",
+      "timestamp": "2026-10-29T17:31:03.130Z",
+      "branchId": "br-008",
+      "branchName": "Bliss Githurai",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "kids",
+      "previousOnHand": 50,
+      "quantityChanged": -1,
+      "resultingOnHand": 49,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": -1,
+      "previousCategoryOnHand": {
+        "male": 20,
+        "female": 20,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 20,
+        "female": 20,
+        "kids": 9
+      },
+      "actor": "David Kiprop",
+      "reason": "Manual stock adjustment: Drop to 49 to test low stock alert (-1 kids frames)"
+    },
+    {
+      "id": "mvt-1793295063114",
+      "timestamp": "2026-10-29T17:31:03.114Z",
+      "branchId": "br-008",
+      "branchName": "Bliss Githurai",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "kids",
+      "previousOnHand": 50,
+      "quantityChanged": 0,
+      "resultingOnHand": 50,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 20,
+        "female": 20,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 20,
+        "female": 20,
+        "kids": 10
+      },
+      "actor": "David Kiprop",
+      "reason": "Manual stock adjustment: Set to 10 for threshold audit (Total 50) (+0 kids frames)"
+    },
+    {
+      "id": "mvt-1793295063110",
+      "timestamp": "2026-10-29T17:31:03.110Z",
+      "branchId": "br-008",
+      "branchName": "Bliss Githurai",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "female",
+      "previousOnHand": 80,
+      "quantityChanged": -30,
+      "resultingOnHand": 50,
+      "maleChanged": 0,
+      "femaleChanged": -30,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 20,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 20,
+        "female": 20,
+        "kids": 10
+      },
+      "actor": "David Kiprop",
+      "reason": "Manual stock adjustment: Set to 20 for threshold audit (-30 female frames)"
+    },
+    {
+      "id": "mvt-1793295063106",
+      "timestamp": "2026-10-29T17:31:03.106Z",
+      "branchId": "br-008",
+      "branchName": "Bliss Githurai",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "male",
+      "previousOnHand": 100,
+      "quantityChanged": -20,
+      "resultingOnHand": 80,
+      "maleChanged": -20,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 20,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "David Kiprop",
+      "reason": "Manual stock adjustment: Set to 20 for threshold audit (-20 male frames)"
+    },
+    {
+      "id": "mvt-1793295063096",
+      "timestamp": "2026-10-29T17:31:03.096Z",
+      "branchId": "br-007",
+      "branchName": "Bliss Embu",
+      "orderId": "ord-1793295063096-lpt1",
+      "orderNumber": "EYE-ORD-202610-0003",
+      "movementType": "ORDER_ALLOCATION",
+      "category": "all",
+      "previousOnHand": 100,
+      "quantityChanged": 0,
+      "resultingOnHand": 100,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "SUBMITTED order EYE-ORD-202610-0003 created for 40 frames (M:20, F:15, K:5)"
+    },
+    {
+      "id": "mvt-1793295063076",
+      "timestamp": "2026-10-29T17:31:03.076Z",
+      "branchId": "br-006",
+      "branchName": "Bliss Embakasi",
+      "orderId": "ord-1793295063076-sljw",
+      "orderNumber": "EYE-ORD-202610-0002",
+      "movementType": "ORDER_ALLOCATION",
+      "category": "all",
+      "previousOnHand": 100,
+      "quantityChanged": 0,
+      "resultingOnHand": 100,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 40,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "DRAFT order EYE-ORD-202610-0002 created for 40 frames (M:15, F:20, K:5)"
+    },
+    {
+      "id": "mvt-1793295063070",
+      "timestamp": "2026-10-29T17:31:03.070Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "orderId": "ord-1793295063070-234o",
+      "orderNumber": "EYE-ORD-202610-0001",
+      "movementType": "ORDER_ALLOCATION",
+      "category": "all",
+      "previousOnHand": 150,
+      "quantityChanged": 0,
+      "resultingOnHand": 150,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "DRAFT order EYE-ORD-202610-0001 created for 5 frames (M:0, F:5, K:0)"
+    },
+    {
+      "id": "mvt-1793295056355-cmjw",
+      "timestamp": "2026-10-29T17:30:56.355Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "kids",
+      "previousOnHand": 10,
+      "quantityChanged": 10,
+      "resultingOnHand": 20,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": 10,
+      "previousCategoryOnHand": {
+        "male": 45,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Reverted back to original sheet baseline (+10 Kids)"
+    },
+    {
+      "id": "mvt-1793295056355-b6xz",
+      "timestamp": "2026-10-29T17:30:56.355Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "female",
+      "previousOnHand": 50,
+      "quantityChanged": 20,
+      "resultingOnHand": 70,
+      "maleChanged": 0,
+      "femaleChanged": 20,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 45,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Reverted back to original sheet baseline (+20 Female)"
+    },
+    {
+      "id": "mvt-1793295056355-1xr6",
+      "timestamp": "2026-10-29T17:30:56.355Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "male",
+      "previousOnHand": 45,
+      "quantityChanged": 15,
+      "resultingOnHand": 60,
+      "maleChanged": 15,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 45,
+        "female": 50,
+        "kids": 10
+      },
+      "resultingCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Reverted back to original sheet baseline (+15 Male)"
+    },
+    {
+      "id": "mvt-1793295056336-oh3k",
+      "timestamp": "2026-10-29T17:30:56.336Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "kids",
+      "previousOnHand": 20,
+      "quantityChanged": -10,
+      "resultingOnHand": 10,
+      "maleChanged": 0,
+      "femaleChanged": 0,
+      "kidsChanged": -10,
+      "previousCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "resultingCategoryOnHand": {
+        "male": 45,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Receptionist stock count verification test (-10 Kids)"
+    },
+    {
+      "id": "mvt-1793295056336-8qun",
+      "timestamp": "2026-10-29T17:30:56.336Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "female",
+      "previousOnHand": 70,
+      "quantityChanged": -20,
+      "resultingOnHand": 50,
+      "maleChanged": 0,
+      "femaleChanged": -20,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "resultingCategoryOnHand": {
+        "male": 45,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Receptionist stock count verification test (-20 Female)"
+    },
+    {
+      "id": "mvt-1793295056336-35ga",
+      "timestamp": "2026-10-29T17:30:56.336Z",
+      "branchId": "br-005",
+      "branchName": "Bliss Eldoret Zion mall",
+      "movementType": "MANUAL_ADJUSTMENT",
+      "category": "male",
+      "previousOnHand": 60,
+      "quantityChanged": -15,
+      "resultingOnHand": 45,
+      "maleChanged": -15,
+      "femaleChanged": 0,
+      "kidsChanged": 0,
+      "previousCategoryOnHand": {
+        "male": 60,
+        "female": 70,
+        "kids": 20
+      },
+      "resultingCategoryOnHand": {
+        "male": 45,
+        "female": 50,
+        "kids": 10
+      },
+      "actor": "Sarah Wanjiku",
+      "reason": "Receptionist stock count verification test (-15 Male)"
+    },
     {
       "id": "mvt-init-br-001",
       "timestamp": "2026-10-18T09:15:32.691Z",
@@ -2597,6 +3202,21 @@
   ],
   "alerts": [
     {
+      "id": "alt-br-008-1793295063130-5iyq",
+      "branchId": "br-008",
+      "branchName": "Bliss Githurai",
+      "currentStock": 49,
+      "minThreshold": 50,
+      "shortageAmount": 1,
+      "maleBalance": 20,
+      "femaleBalance": 20,
+      "kidsBalance": 9,
+      "severity": "LOW_STOCK",
+      "detectedAt": "2026-10-29T17:31:03.130Z",
+      "acknowledged": false,
+      "recommendedAction": "Stock is below threshold (49/50). Restock 1+ frames."
+    },
+    {
       "id": "alt-br-002-1792314932691-ch3i",
       "branchId": "br-002",
       "branchName": "Bliss Diani",
@@ -2615,13 +3235,13 @@
       "id": "alt-br-010-1792314932691-kybc",
       "branchId": "br-010",
       "branchName": "Bliss Iten",
-      "currentStock": 0,
+      "currentStock": 30,
       "minThreshold": 50,
-      "shortageAmount": 50,
-      "maleBalance": 0,
-      "femaleBalance": 0,
-      "kidsBalance": 0,
-      "severity": "CRITICAL_ZERO",
+      "shortageAmount": 20,
+      "maleBalance": 10,
+      "femaleBalance": 10,
+      "kidsBalance": 10,
+      "severity": "LOW_STOCK",
       "detectedAt": "2026-10-18T09:15:32.691Z",
       "acknowledged": false,
       "recommendedAction": "Critical: Branch completely out of frames. Dispatch emergency batch immediately (min 50+ frames)."
@@ -2715,10 +3335,10 @@
     }
   ],
   "warehouse": {
-    "maleOnHand": 4500,
-    "femaleOnHand": 4500,
-    "kidsOnHand": 2000,
-    "totalOnHand": 11000,
+    "maleOnHand": 4490,
+    "femaleOnHand": 4490,
+    "kidsOnHand": 1990,
+    "totalOnHand": 10970,
     "lastRestockedAt": "2026-10-18T09:15:32.691Z"
   },
   "users": [
