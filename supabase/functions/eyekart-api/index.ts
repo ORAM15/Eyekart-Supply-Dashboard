@@ -477,8 +477,15 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
       throw new ApiError(404, "UNKNOWN_ORDER_ACTION", "Unknown order action.");
     }
     update.timeline = timeline;
-    const { data: updated, error } = await client.from("orders").update(update).eq("id", id).select("*").single();
+    const { data: updated, error } = await client
+      .from("orders")
+      .update(update)
+      .eq("id", id)
+      .eq("status", order.status)
+      .select("*")
+      .maybeSingle();
     if (error) throw new ApiError(503, "ORDER_UPDATE_FAILED", "The order update could not be saved.");
+    if (!updated) throw new ApiError(409, "STALE_ORDER_STATE", "Another user changed this order. Refresh the orders list and review its current status before retrying.");
     const branch = await oneBranch(order.branch_id);
     return { success: true, order: orderDto(updated), branch: branchDto(branch), mode: "LIVE_CRUD" };
   }
@@ -632,7 +639,8 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
     if (note.length < 3) throw new ApiError(400,"AUDIT_REASON_REQUIRED","A reason of at least 3 characters is required.");
     const { error } = await client.rpc("adjust_branch_stock", {
       p_branch_id: row.id,p_male:q.male,p_female:q.female,p_kids:q.kids,
-      p_note:note,p_actor_user_id:profile.id,p_actor_name:profile.display_name,p_expected_updated_at:row.updated_at,
+      p_note:note,p_actor_user_id:profile.id,p_actor_name:profile.display_name,
+      p_expected_updated_at:payload.expectedUpdatedAt ?? null,
     });
     if (error) throw new ApiError(400,"STOCK_UPDATE_FAILED","Stock adjustment failed; no partial update was committed.");
     return { success:true,branch:branchDto(await oneBranch(row.id)),mode:"LIVE_CRUD" };
