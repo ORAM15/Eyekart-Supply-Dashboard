@@ -38,6 +38,8 @@ create table if not exists public.stock_movements (
   branch_name text not null,
   movement_type text not null,
   category text not null check (category in ('male','female','kids','all')),
+  order_id text,
+  order_number text,
   previous_on_hand integer not null,
   quantity_changed integer not null,
   resulting_on_hand integer not null check (resulting_on_hand >= 0),
@@ -145,7 +147,7 @@ values
   ('br-033', 33, 'Bliss Wote', 'Bliss Wote', false, NULL, true, 'MIX Metals &Plast', 50, 60, 70, 20, false),
   ('br-034', 34, 'Clinix Haille Selasie', 'Clinix Haille Selasie', false, NULL, true, 'MIX Metals &Plast', 50, 40, 50, 10, false),
   ('br-036', 36, 'Medicross Nakuru', 'Medicross Nakuru', false, NULL, true, 'MIX Metals &Plast', 50, 40, 50, 10, false),
-  ('br-037', 37, 'Medicross Narok', 'Medicross Narok', false, NULL, true, 'MIX Metals &Plast', 50, 40, 50, 10, false)
+  ('br-037', 37, 'Medicross Narok', 'Medicross Narok', false, NULL, true, 'MIX Metals &Plast', 50, 40, 50, 10, true)
 on conflict (id) do nothing;
 
 -- Build alert snapshots only for source rows with stock below the default threshold.
@@ -466,8 +468,4 @@ $$;
 revoke all on function public.receive_order_atomic(text,integer,integer,integer,uuid,text) from public, anon, authenticated;
 grant execute on function public.receive_order_atomic(text,integer,integer,integer,uuid,text) to service_role;
 
--- Add the new audit columns expected by order receipts to stock_movements.
-alter table public.stock_movements add column if not exists order_id text;
-alter table public.stock_movements add column if not exists order_number text;
-
--- Lock the new helper functions to the trusted backend role.
+-- The exposed/public Data API cannot access these tables as anon/authenticated: only the trusted Edge Function uses service_role.
