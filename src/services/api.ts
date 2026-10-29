@@ -111,7 +111,7 @@ export const api = {
 
   async updateCounterStock(
     id: string,
-    data: { male: number; female: number; kids: number; note?: string; actor?: string }
+    data: { male: number; female: number; kids: number; note?: string; actor?: string; expectedUpdatedAt?: string }
   ): Promise<{ success: boolean; branch: Branch; movements: StockMovement[]; message: string }> {
     const res = await fetch(`${API_BASE}/branches/${id}/stock`, {
       method: 'POST',
