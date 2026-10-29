@@ -36,7 +36,7 @@ jobs:
           deno-version: v2.x
 
       - name: Type-check Supabase Edge Function
-        run: deno check supabase/functions/eyekart-api/index.ts
+        run: deno check --config supabase/functions/eyekart-api/deno.json supabase/functions/eyekart-api/index.ts
 
       - name: Test read-only Vercel API snapshot
         run: bun run test:api-snapshot
