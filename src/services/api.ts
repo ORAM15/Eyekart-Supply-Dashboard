@@ -8,12 +8,9 @@ import type {
   ValidationIssue,
   StockCategory,
 } from '../types/index.js';
+import { getAccessToken, getLiveApiBase, getSupabasePublicConfig, isLiveCrudConfigured } from './auth.js';
 
-// Snapshot mode remains the default even if an API URL is configured. Only route browser requests
-// directly to a separate live API after the production auth/database gates have been reviewed.
-const API_BASE = import.meta.env.VITE_EYEKART_LIVE_MODE === 'true' && import.meta.env.VITE_API_BASE_URL
-  ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')
-  : '/api';
+const API_BASE = getLiveApiBase();
 
 export interface ValidationSummaryResponse {
   success: boolean;
@@ -33,30 +30,36 @@ export interface ValidationSummaryResponse {
   };
 }
 
-let currentAuth = {
-  role: 'RECEPTIONIST',
-  userId: 'usr-sarah',
-  email: 'sarah.wanjiku@eyekart.co.ke',
-};
-
-export function setApiAuth(auth: { role: string; userId: string; email: string }) {
-  currentAuth = { ...auth };
-}
-
-function getHeaders(extra?: Record<string, string>): HeadersInit {
-  return {
+async function getHeaders(extra?: Record<string, string>): Promise<HeadersInit> {
+  const headers: Record<string, string> = {
     'Content-Type': 'application/json',
-    'x-user-role': currentAuth.role,
-    'x-user-id': currentAuth.userId,
-    'x-user-email': currentAuth.email,
     ...(extra || {}),
   };
+
+  if (isLiveCrudConfigured()) {
+    const token = await getAccessToken();
+    if (!token) throw new Error('Your EyeKart session has expired. Sign in again before saving.');
+    const { publishableKey } = getSupabasePublicConfig();
+    headers.apikey = publishableKey;
+    headers.Authorization = `Bearer ${token}`;
+  }
+
+  // Never send client-supplied role/user identity as authority. The API resolves it from
+  // a verified Supabase Auth JWT and the server-owned app_users profile.
+  return headers;
 }
 
 export const api = {
   async getHealth() {
-    const res = await fetch(`${API_BASE}/health`, { headers: getHeaders() });
+    const res = await fetch(`${API_BASE}/health`, { headers: await getHeaders() });
     return res.json();
+  },
+
+  async getMe(): Promise<{ user: { id: string; email: string; display_name: string; role: 'ADMIN' | 'RECEPTIONIST' | 'BRANCH_USER'; assigned_branch_id?: string | null; is_active: boolean }; mode: string }> {
+    const res = await fetch(`${API_BASE}/me`, { headers: await getHeaders() });
+    const result = await res.json();
+    if (!res.ok) throw new Error(result.error || 'Could not verify EyeKart user profile.');
+    return result;
   },
 
   async getBranches(): Promise<{ success: boolean; branches: Branch[]; totalCount: number }> {
