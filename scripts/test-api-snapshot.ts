@@ -1,7 +1,13 @@
 import type { IncomingMessage, ServerResponse } from 'node:http';
 import handler from '../api/[...path].ts';
+import branchDetailRoute from '../api/branches/[id].ts';
+import branchActionRoute from '../api/branches/[id]/[action].ts';
+import monthlyReportRoute from '../api/reports/monthly.ts';
+import orderActionRoute from '../api/orders/[id]/[action].ts';
+import alertActionRoute from '../api/alerts/[id]/[action].ts';
+import inventoryActionRoute from '../api/inventory/[action].ts';
 
-function invoke(method: string, url: string): Promise<{ status: number; body: any }> {
+function invoke(method: string, url: string, routeHandler = handler): Promise<{ status: number; body: any }> {
   return new Promise((resolve, reject) => {
     const req = { method, url } as IncomingMessage;
     const mock: {
@@ -28,7 +34,7 @@ function invoke(method: string, url: string): Promise<{ status: number; body: an
     };
 
     try {
-      handler(req, mock as unknown as ServerResponse);
+      routeHandler(req, mock as unknown as ServerResponse);
     } catch (error) {
       reject(error);
     }
@@ -87,5 +93,24 @@ assert(write.body.code === 'READ_ONLY_SNAPSHOT', 'write failure should explain s
 
 const options = await invoke('OPTIONS', '/api/orders');
 assert(options.status === 204, 'preflight should return 204');
+
+
+const nestedBranch = await invoke('GET', '/api/branches/br-008', branchDetailRoute);
+assert(nestedBranch.status === 200, 'explicit nested branch route should return 200');
+assert(nestedBranch.body.branch.inventory.totalOnHand === 100, 'explicit nested branch route should return corrected Githurai baseline');
+
+const nestedMonthly = await invoke('GET', '/api/reports/monthly?month=10&year=2026', monthlyReportRoute);
+assert(nestedMonthly.status === 200, 'explicit monthly-report route should return 200');
+assert(nestedMonthly.body.report.totals.totalClosing === 3740, 'monthly snapshot should report 3,740 starting frames');
+assert(nestedMonthly.body.report.totals.ordersCount === 0, 'monthly snapshot must not imply demo transactional counts');
+
+const nestedWrites = [
+  await invoke('POST', '/api/branches/br-008/stock', branchActionRoute),
+  await invoke('POST', '/api/orders/demo-order/submit', orderActionRoute),
+  await invoke('POST', '/api/alerts/alert-id/acknowledge', alertActionRoute),
+  await invoke('POST', '/api/inventory/adjust', inventoryActionRoute),
+];
+assert(nestedWrites.every((response) => response.status === 503), 'all explicit nested mutation routes must block writes with 503');
+assert(nestedWrites.every((response) => response.body.code === 'READ_ONLY_SNAPSHOT'), 'nested mutation routes should return the read-only error code');
 
 console.log('PASS: Vercel snapshot API checks (source totals, corrected discrepant branches, demo exclusion, unverified warehouse, read-only writes).');
