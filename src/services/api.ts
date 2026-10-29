@@ -258,6 +258,7 @@ export const api = {
     newQuantity: number;
     reason: string;
     actor: string;
+    expectedUpdatedAt?: string;
   }): Promise<{ success: boolean; branch: Branch }> {
     const res = await fetch(`${API_BASE}/inventory/adjust`, {
       method: 'POST',
