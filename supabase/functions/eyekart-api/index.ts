@@ -291,10 +291,13 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
     if (note.length < 3) throw new ApiError(400, "AUDIT_REASON_REQUIRED", "Enter a reason of at least 3 characters for the stock audit trail.");
     const { data, error } = await client.rpc("adjust_branch_stock", {
       p_branch_id: id, p_male: q.male, p_female: q.female, p_kids: q.kids,
-      p_note: note, p_actor_user_id: profile.id, p_actor_name: profile.display_name,
+      p_note: note, p_actor_user_id: profile.id, p_actor_name: profile.display_name, p_expected_updated_at: payload.expectedUpdatedAt ?? null,
     });
     if (error) {
       console.error("atomic stock adjustment failed", error.message);
+      if (error.code === "40001" || /stock changed since/i.test(error.message)) {
+        throw new ApiError(409, "STALE_STOCK_VERSION", "This counter was updated by another user after you opened it. Close and reopen the counter, review the latest quantities, and apply your change again.");
+      }
       const message = /active branch not found/i.test(error.message) ? "Active branch not found."
         : /reason/i.test(error.message) ? "A valid audit reason is required."
         : /whole numbers|between 0/i.test(error.message) ? "Frame quantities must be non-negative whole numbers."
@@ -512,11 +515,13 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
     const payload = await req.json().catch(() => null);
     if (!payload) throw new ApiError(400, "INVALID_BODY", "Send a physical warehouse count.");
     const q = itemCounts(payload.male, payload.female, payload.kids);
-    const { data, error } = await client.from("warehouse_inventory").upsert({
-      id: "central", male_on_hand: q.male, female_on_hand: q.female, kids_on_hand: q.kids,
-      last_restocked_at: new Date().toISOString(), updated_at: new Date().toISOString(),
-    }).select("*").single();
-    if (error) throw new ApiError(503, "WAREHOUSE_UPDATE_FAILED", "Could not save the warehouse count.");
+    const note = typeof payload.note === "string" ? payload.note.trim() : "";
+    if (note.length < 3) throw new ApiError(400, "AUDIT_REASON_REQUIRED", "A warehouse count/audit reason of at least 3 characters is required.");
+    const { data, error } = await client.rpc("adjust_warehouse_stock", {
+      p_male: q.male, p_female: q.female, p_kids: q.kids,
+      p_note: note, p_actor_user_id: profile.id, p_actor_name: profile.display_name,
+    });
+    if (error) throw new ApiError(503, "WAREHOUSE_UPDATE_FAILED", "Could not save the warehouse count with its audit record.");
     return { success: true, warehouse: warehouseDto(data), mode: "LIVE_CRUD" };
   }
 
