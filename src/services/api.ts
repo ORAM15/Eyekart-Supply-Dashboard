@@ -9,9 +9,11 @@ import type {
   StockCategory,
 } from '../types/index.js';
 
-// VITE_API_BASE_URL should be the separately deployed Express API origin in production.
-// Leave empty for same-origin development/proxy setups. Example: https://api.example.com/api
-const API_BASE = (import.meta.env.VITE_API_BASE_URL || '/api').replace(/\/$/, '');
+// Snapshot mode remains the default even if an API URL is configured. Only route browser requests
+// directly to a separate live API after the production auth/database gates have been reviewed.
+const API_BASE = import.meta.env.VITE_EYEKART_LIVE_MODE === 'true' && import.meta.env.VITE_API_BASE_URL
+  ? import.meta.env.VITE_API_BASE_URL.replace(/\/$/, '')
+  : '/api';
 
 export interface ValidationSummaryResponse {
   success: boolean;
