@@ -29,6 +29,17 @@ A first manual visual pass is **not yet safe to treat as an exact transcription*
 
 **Decision:** do not create or apply a stock import from this manual pass. The screenshot remains the only source artifact, but exact row-by-row values must be reviewed at higher zoom/cropped sections or confirmed by the owner before migration. If no higher-resolution source exists, record each uncertain cell and ask for explicit confirmation rather than guessing.
 
+## Isolated-branch implementation progress (2026-10-30)
+
+The following limited deployment-readiness changes were committed on `repair/production-backend`:
+- `package.json`: `start` runs `tsx server.ts` rather than asking Node to execute the TypeScript file directly.
+- `server.ts`: listen port honors `process.env.PORT`.
+- `src/services/api.ts`: frontend can target an independently deployed API using `VITE_API_BASE_URL`; same-origin `/api` remains the default.
+- `.env.example`: documents the API URL and port placeholders.
+- `docs/BACKEND_DEPLOYMENT_NOTES.md`: explains hosting configuration and outstanding security/data prerequisites.
+
+These are configuration/readiness changes only. They do **not** create an API deployment, fix the 404 by themselves, add verified authentication, secure the existing role middleware, or provide durable persistence. No build or test run has been performed in this environment; do not represent these changes as verified.
+
 ## Safe implementation order
 
 ### Gate A — data reconciliation (blocked)
