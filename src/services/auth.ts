@@ -133,7 +133,7 @@ export async function signOutFromSupabase(): Promise<void> {
   const session = getStoredSession();
   if (session) {
     try {
-      await authRequest('logout', undefined, session.access_token);
+      await authRequest('logout', {}, session.access_token);
     } catch {
       // Clear the local session even if network logout fails.
     }
