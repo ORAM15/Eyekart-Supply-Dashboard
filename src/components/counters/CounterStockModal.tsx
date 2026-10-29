@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import type { Branch, StockMovement } from '../../types/index.js';
 import { useApp } from '../../context/AppContext.js';
 import { api } from '../../services/api.js';
+import { isLiveCrudConfigured } from '../../services/auth.js';
 import {
   ArrowLeft,
   Save,
@@ -28,7 +29,7 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
   onClose,
 }) => {
   const { updateCounterStock, refreshData } = useApp();
-  const isSnapshotMode = !import.meta.env.VITE_API_BASE_URL || import.meta.env.VITE_EYEKART_LIVE_MODE !== 'true';
+  const isSnapshotMode = !isLiveCrudConfigured();
 
   // Local state for stock quantities
   const [male, setMale] = useState<number>(branch.inventory.male.onHand);
@@ -108,7 +109,11 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
 
     try {
       if (isSnapshotMode) {
-        setErrorMessage('This deployment is read-only. Your +/− edits are only a preview and were not saved. Connect a secure authenticated database before recording stock changes.');
+        setErrorMessage('This deployment is read-only. Your +/− edits are only a preview and were not saved. Configure Supabase Auth and the live database before recording stock changes.');
+        return;
+      }
+      if (note.trim().length < 3) {
+        setErrorMessage('Enter a reason of at least 3 characters. Every real stock adjustment must have an audit note.');
         return;
       }
 
@@ -116,7 +121,7 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
         male,
         female,
         kids,
-        note: note.trim() || undefined,
+        note: note.trim(),
       });
 
       setSuccessMessage(
@@ -190,11 +195,18 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
 
         {/* Scrollable Content Body */}
         <div className="p-5 sm:p-7 overflow-y-auto space-y-6 flex-1">
-          {isSnapshotMode && (
+          {isSnapshotMode ? (
             <div role="status" className="rounded-xl border border-amber-300 bg-amber-50 p-4 text-sm text-amber-950">
               <p className="font-extrabold uppercase tracking-wide">Preview adjustments only</p>
               <p className="mt-1 text-xs leading-relaxed">
-                The +/− buttons and quantity fields update this counter preview. Saving is unavailable because the production API is currently read-only. These draft numbers will not change the official branch stock or survive closing this window.
+                The +/− buttons and quantity fields update this counter preview. Saving is unavailable in snapshot mode, so draft changes will not change official branch stock and will be discarded when this window closes.
+              </p>
+            </div>
+          ) : (
+            <div role="status" className="rounded-xl border border-emerald-300 bg-emerald-50 p-4 text-sm text-emerald-950">
+              <p className="font-extrabold uppercase tracking-wide">Live inventory connection</p>
+              <p className="mt-1 text-xs leading-relaxed">
+                Saving writes the new quantities to the live database and appends an audit entry. Changes refresh other open dashboards within a few seconds. A reason is required for every save.
               </p>
             </div>
           )}
@@ -413,13 +425,13 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
           {/* Simple text field for an optional note */}
           <div className="space-y-1.5">
             <label className="text-xs font-bold text-slate-700 uppercase tracking-wider block">
-              Optional Note (Reason for Change)
+              Mandatory Audit Note / Reason
             </label>
             <input
               type="text"
               value={note}
               onChange={(e) => setNote(e.target.value)}
-              placeholder="e.g., Morning delivery arrived, damaged frames removed, customer return"
+              placeholder="Required: e.g. physical count verified, broken frames removed, delivery received"
               className="w-full px-4 py-3 bg-white border-2 border-slate-200 rounded-xl text-sm text-slate-800 placeholder-slate-400 focus:outline-none focus:border-teal-600 focus:ring-2 focus:ring-teal-500/20 transition-colors"
             />
           </div>
@@ -429,8 +441,8 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
             <button
               type="button"
               onClick={handleSave}
-              disabled={saving || isSnapshotMode}
-              title={isSnapshotMode ? 'Saving is disabled in read-only snapshot mode' : 'Save stock changes'}
+              disabled={saving || isSnapshotMode || note.trim().length < 3}
+              title={isSnapshotMode ? 'Saving is disabled in read-only snapshot mode' : note.trim().length < 3 ? 'Add an audit reason before saving' : 'Save stock changes to the live database'}
               className="w-full sm:flex-1 py-4 px-6 bg-teal-600 hover:bg-teal-700 active:bg-teal-800 disabled:bg-slate-400 disabled:cursor-not-allowed text-white font-extrabold text-base rounded-2xl shadow-lg shadow-teal-700/20 flex items-center justify-center gap-2 transition-all"
             >
               {saving ? (
@@ -441,7 +453,7 @@ export const CounterStockModal: React.FC<CounterStockModalProps> = ({
               ) : (
                 <>
                   <Save className="w-5 h-5" />
-                  <span>{isSnapshotMode ? 'Saving Disabled — Read-Only Mode' : 'Save Stock Changes'}</span>
+                  <span>{isSnapshotMode ? 'Saving Disabled — Read-Only Mode' : 'Save Stock Changes Live'}</span>
                 </>
               )}
             </button>
