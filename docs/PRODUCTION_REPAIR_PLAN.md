@@ -75,3 +75,13 @@ The repository data file and seed records were inspected without writing either 
 
 Do not migrate, reset, normalize, or deploy writes against this data yet. Ask the business owner to identify the authoritative current inventory/source spreadsheet and confirm whether the 2026-10-29 orders and movements are genuine operational transactions or test records. Preserve the JSON unchanged until that reconciliation is complete.
 
+## Owner confirmation received (2026-10-30)
+
+The owner has confirmed:
+- The original Excel/Google Sheets stock spreadsheet is the authoritative inventory source.
+- The October 29, 2026 orders and stock movements in the JSON are test/demo transactions, not genuine operational transactions.
+
+Implementation gate remains blocked until the original spreadsheet is supplied or its accessible source is identified and its totals/branch/category rows are reconciled. The demo transaction records must be excluded from any production import, but preserved in the existing repository snapshot until a verified backup and reviewed import plan exist. Do not delete or rewrite the current JSON as part of this step.
+
+Next safe step: obtain the original spreadsheet export (CSV/XLSX) or a directly accessible Google Sheets export. Build a read-only reconciliation report comparing its branch IDs/names and category quantities against the seed and JSON, then prepare a separately reviewed production import. Authentication provider and persistent database must be selected and configured before enabling write routes.
+
