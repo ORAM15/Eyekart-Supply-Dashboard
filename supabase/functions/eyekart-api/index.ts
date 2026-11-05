@@ -426,7 +426,8 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
       update.status = "SUBMITTED";
       timeline.push({ status: "SUBMITTED", timestamp: now, actor: profile.display_name });
     } else if (action === "approve") {
-      requireRole(profile, ["ADMIN"]);
+      // Oram approved 2026-11-05: RECEPTIONIST may approve and dispatch, audit-logged via timeline actor.
+      requireRole(profile, ["ADMIN", "RECEPTIONIST"]);
       if (order.status !== "SUBMITTED") throw new ApiError(409, "INVALID_ORDER_STATE", "Only submitted orders can be approved.");
       const requested = order.requested_items;
       const approved = itemCounts(payload.approvedMale ?? requested.male, payload.approvedFemale ?? requested.female, payload.approvedKids ?? requested.kids);
@@ -436,7 +437,8 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
       update.status = "APPROVED"; update.approved_items = approved; update.approved_by = profile.display_name;
       timeline.push({ status: "APPROVED", timestamp: now, actor: profile.display_name });
     } else if (action === "dispatch") {
-      requireRole(profile, ["ADMIN"]);
+      // Oram approved 2026-11-05: RECEPTIONIST may dispatch/ship, audit-logged via dispatched_by + warehouse movement.
+      requireRole(profile, ["ADMIN", "RECEPTIONIST"]);
       if (order.status !== "APPROVED") throw new ApiError(409, "INVALID_ORDER_STATE", "Only approved orders can be dispatched.");
       const approved = order.approved_items ?? order.requested_items;
       const qty = itemCounts(payload.dispatchedMale ?? approved.male, payload.dispatchedFemale ?? approved.female, payload.dispatchedKids ?? approved.kids);
@@ -625,7 +627,8 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
   }
 
   if (path === "inventory/adjust" && method === "POST") {
-    requireRole(profile, ["ADMIN"]);
+    // Oram approved 2026-11-05: RECEPTIONIST may do audited +/- stock corrections (reason required, movement row written).
+    requireRole(profile, ["ADMIN", "RECEPTIONIST"]);
     const payload = await req.json().catch(() => null);
     if (!payload?.branchId || !["male","female","kids"].includes(payload.category)) throw new ApiError(400,"INVALID_ADJUSTMENT","Choose a branch and category.");
     const row = await oneBranch(payload.branchId);

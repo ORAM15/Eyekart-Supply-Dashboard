@@ -318,10 +318,10 @@ export const OrdersView: React.FC = () => {
                       </>
                     )}
 
-                    {/* Submitted Actions (Admin approve/reject or receptionist cancel) */}
+                    {/* Submitted Actions (Admin/receptionist approve, admin reject, receptionist cancel) */}
                     {ord.status === 'SUBMITTED' && (
                       <>
-                        {currentUser.role === 'ADMIN' ? (
+                        {(currentUser.role === 'ADMIN' || currentUser.role === 'RECEPTIONIST') ? (
                           <>
                             <button
                               onClick={() => openActionDialog(ord, 'approve')}
@@ -329,12 +329,14 @@ export const OrdersView: React.FC = () => {
                             >
                               Approve
                             </button>
-                            <button
-                              onClick={() => openActionDialog(ord, 'reject')}
-                              className="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs"
-                            >
-                              Reject
-                            </button>
+                            {currentUser.role === 'ADMIN' && (
+                              <button
+                                onClick={() => openActionDialog(ord, 'reject')}
+                                className="px-3 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs"
+                              >
+                                Reject
+                              </button>
+                            )}
                           </>
                         ) : (
                           <button

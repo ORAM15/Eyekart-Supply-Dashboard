@@ -145,8 +145,8 @@ export const InventoryView: React.FC = () => {
         </div>
       </div>
 
-      {/* Admin Manual Adjustment Module */}
-      {currentUser.role === 'ADMIN' && !isSnapshotMode && (
+      {/* Manual Adjustment Module — ADMIN and RECEPTIONIST, audited */}
+      {(currentUser.role === 'ADMIN' || currentUser.role === 'RECEPTIONIST') && !isSnapshotMode && (
         <div className="bg-white p-6 rounded-2xl border border-slate-200 shadow-xs space-y-4">
           <div className="flex items-center space-x-2">
             <Sliders className="w-5 h-5 text-slate-700" />

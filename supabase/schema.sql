@@ -354,8 +354,8 @@ declare
   v_approved jsonb;
   v_timeline jsonb;
 begin
-  if not exists (select 1 from public.app_users u where u.id=p_actor_user_id and u.is_active and u.role='ADMIN') then
-    raise exception using errcode='42501', message='Only an active administrator can dispatch orders.';
+  if not exists (select 1 from public.app_users u where u.id=p_actor_user_id and u.is_active and u.role in ('ADMIN','RECEPTIONIST')) then
+    raise exception using errcode='42501', message='Only an active administrator or receptionist can dispatch orders.';
   end if;
   select * into v_order from public.orders where id=p_order_id for update;
   if not found or v_order.status <> 'APPROVED' then
