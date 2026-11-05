@@ -99,6 +99,29 @@ export async function signInWithPassword(email: string, password: string): Promi
   return storeSession(payload);
 }
 
+export interface SignUpResult {
+  session: EyeKartAuthSession | null;
+  needsConfirmation: boolean;
+}
+
+export async function signUpWithPassword(
+  name: string,
+  email: string,
+  password: string,
+): Promise<SignUpResult> {
+  const payload = await authRequest('signup', {
+    email: email.trim(),
+    password,
+    data: { display_name: name.trim() },
+  });
+  // With email confirmation off, Supabase returns a session immediately.
+  // With it on, there is no session yet: the member confirms via email first.
+  if (payload.access_token && payload.user?.id) {
+    return { session: storeSession(payload), needsConfirmation: false };
+  }
+  return { session: null, needsConfirmation: true };
+}
+
 export async function getAccessToken(): Promise<string | null> {
   const session = getStoredSession();
   if (!session) return null;
