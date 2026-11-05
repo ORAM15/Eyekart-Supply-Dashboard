@@ -9,7 +9,8 @@ import type {
   UserSession,
   StockCategory,
 } from '../types/index.js';
-import { api, setApiAuth, type ValidationSummaryResponse } from '../services/api.js';
+import { api, type ValidationSummaryResponse } from '../services/api.js';
+import { isLiveCrudConfigured } from '../services/auth.js';
 
 export interface ToastMessage {
   id: string;
@@ -100,7 +101,8 @@ interface AppContextType {
     branchId: string,
     category: StockCategory,
     newQuantity: number,
-    reason: string
+    reason: string,
+    expectedUpdatedAt?: string
   ) => Promise<void>;
   updateBranchThreshold: (branchId: string, minThreshold: number) => Promise<void>;
   verifyBranchName: (branchId: string, canonicalName?: string) => Promise<void>;
@@ -113,14 +115,14 @@ interface AppContextType {
   acknowledgeAlert: (alertId: string) => Promise<void>;
   updateCounterStock: (
     branchId: string,
-    data: { male: number; female: number; kids: number; note?: string }
+    data: { male: number; female: number; kids: number; note?: string; expectedUpdatedAt?: string }
   ) => Promise<{ success: boolean; branch: Branch; message: string }>;
   resetDatabase: () => Promise<void>;
 }
 
 const AppContext = createContext<AppContextType | undefined>(undefined);
 
-export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
+export const AppProvider: React.FC<{ children: React.ReactNode; initialUser?: UserSession }> = ({ children, initialUser }) => {
   const [branches, setBranches] = useState<Branch[]>([]);
   const [orders, setOrders] = useState<Order[]>([]);
   const [alerts, setAlerts] = useState<StockAlert[]>([]);
@@ -130,7 +132,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   const [reconciliationInfo, setReconciliationInfo] =
     useState<ValidationSummaryResponse['reconciliation'] | null>(null);
 
-  const [currentUser, setCurrentUser] = useState<UserSession>(PRESET_USERS[0]); // default to Receptionist
+  const [currentUser, setCurrentUser] = useState<UserSession>(initialUser ?? PRESET_USERS[0]); // preset user is demo-only in snapshot mode
   const [activeTab, setActiveTab] = useState<string>('dashboard');
   const [selectedBranchId, setSelectedBranchId] = useState<string | null>(null);
   const [orderDrawerOpen, setOrderDrawerOpen] = useState(false);
@@ -182,13 +184,11 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
   }, []);
 
   useEffect(() => {
-    setApiAuth({ role: currentUser.role, userId: currentUser.id, email: currentUser.email });
-  }, [currentUser]);
-
-  useEffect(() => {
     refreshData();
-    // Refresh periodically every 30 seconds
-    const interval = setInterval(refreshData, 30000);
+    // Live inventory changes should appear on other open dashboards within a few seconds.
+    // Snapshot-only mode polls less frequently because no writes are accepted there.
+    const intervalMs = isLiveCrudConfigured() ? 5000 : 30000;
+    const interval = setInterval(refreshData, intervalMs);
     return () => clearInterval(interval);
   }, [refreshData]);
 
@@ -316,7 +316,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     branchId: string,
     category: StockCategory,
     newQuantity: number,
-    reason: string
+    reason: string,
+    expectedUpdatedAt?: string
   ) => {
     try {
       await api.adjustInventory({
@@ -325,6 +326,7 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
         newQuantity,
         reason,
         actor: currentUser.name,
+        expectedUpdatedAt,
       });
       showToast('success', `Inventory balance updated with audit log entry.`);
       await refreshData();
