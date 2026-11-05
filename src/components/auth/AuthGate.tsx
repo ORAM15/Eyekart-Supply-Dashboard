@@ -10,6 +10,7 @@ import {
   getStoredSession,
   signInWithPassword,
   signOutFromSupabase,
+  signUpWithPassword,
 } from '../../services/auth.js';
 
 interface AuthGateProps {
@@ -34,6 +35,8 @@ const roleTitle: Record<UserSession['role'], string> = {
 export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
   const [sessionReady, setSessionReady] = useState(false);
   const [profile, setProfile] = useState<UserSession | null>(null);
+  const [mode, setMode] = useState<'signin' | 'signup'>('signin');
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [busy, setBusy] = useState(false);
@@ -69,7 +72,7 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
       setProfile(null);
       setError(
         response.status === 403
-          ? 'This account is authenticated but has no active EyeKart role. An administrator must add it to the app_users table before access is granted.'
+          ? 'This EyeKart account is inactive. An administrator must reactivate it before access is granted.'
           : payload.error || 'Could not verify your EyeKart profile. Please try again.'
       );
       setSessionReady(true);
@@ -133,11 +136,32 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
       setError('Enter your EyeKart account email and password.');
       return;
     }
+    if (mode === 'signup') {
+      if (!name.trim()) {
+        setError('Enter your name so stock changes can be recorded against you.');
+        return;
+      }
+      if (password.length < 6) {
+        setError('Choose a password of at least 6 characters.');
+        return;
+      }
+    }
     setBusy(true);
     setError('');
     setInfo('');
     try {
-      await signInWithPassword(email, password);
+      if (mode === 'signup') {
+        const result = await signUpWithPassword(name, email, password);
+        if (result.needsConfirmation) {
+          setInfo('Account created. Check your email for a confirmation link, then sign in.');
+          setMode('signin');
+          setPassword('');
+          return;
+        }
+        setInfo('Account created — welcome to EyeKart Supply.');
+      } else {
+        await signInWithPassword(email, password);
+      }
       // The auth event updates the gate too; loading inline avoids flashing the login screen.
       await loadProfile();
     } catch (err) {
@@ -171,9 +195,11 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
             <p className="text-xs text-slate-400">Secure stock management · Kenya</p>
           </div>
         </div>
-        <h2 className="text-2xl font-black">Sign in</h2>
+        <h2 className="text-2xl font-black">{mode === 'signup' ? 'Create your account' : 'Sign in'}</h2>
         <p className="mt-2 mb-6 text-sm text-slate-400">
-          Use your approved EyeKart account. A demo role selector is not an authenticated account.
+          {mode === 'signup'
+            ? 'Anyone on the EyeKart team can create an account. The first account becomes the stock administrator; everyone after that joins as inventory receptionist.'
+            : 'Use your EyeKart account. New to the team? Create an account below.'}
         </p>
 
         {error && (
@@ -184,6 +210,21 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
         {info && <p className="mb-4 text-sm text-teal-300">{info}</p>}
 
         <form onSubmit={submit} className="space-y-4">
+          {mode === 'signup' && (
+            <div>
+              <label htmlFor="eyekart-name" className="block mb-1.5 text-xs font-bold uppercase tracking-wide text-slate-300">Your name</label>
+              <input
+                id="eyekart-name"
+                type="text"
+                required
+                autoComplete="name"
+                value={name}
+                onChange={(event) => setName(event.target.value)}
+                className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
+                placeholder="e.g. Wanjiru Kamau"
+              />
+            </div>
+          )}
           <div>
             <label htmlFor="eyekart-email" className="block mb-1.5 text-xs font-bold uppercase tracking-wide text-slate-300">Work email</label>
             <input
@@ -203,11 +244,11 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
               id="eyekart-password"
               type="password"
               required
-              autoComplete="current-password"
+              autoComplete={mode === 'signup' ? 'new-password' : 'current-password'}
               value={password}
               onChange={(event) => setPassword(event.target.value)}
               className="w-full rounded-xl border border-slate-700 bg-slate-950 px-4 py-3 text-sm text-white outline-none focus:border-teal-500 focus:ring-2 focus:ring-teal-500/20"
-              placeholder="Your account password"
+              placeholder={mode === 'signup' ? 'At least 6 characters' : 'Your account password'}
             />
           </div>
           <button
@@ -215,16 +256,25 @@ export const AuthGate: React.FC<AuthGateProps> = ({ children }) => {
             disabled={busy}
             className="w-full rounded-xl bg-teal-500 px-4 py-3 font-extrabold text-slate-950 transition-colors hover:bg-teal-400 disabled:cursor-wait disabled:opacity-60"
           >
-            {busy ? 'Verifying account…' : 'Sign in securely'}
+            {busy ? 'Verifying account…' : mode === 'signup' ? 'Create account' : 'Sign in securely'}
           </button>
         </form>
         <p className="mt-5 text-xs leading-relaxed text-slate-500">
-          Access is granted only when the authenticated Supabase user has an active role in EyeKart’s server-side user table. If this is your first setup, create the Auth user and assign the first ADMIN profile through Supabase before signing in.
+          {mode === 'signup'
+            ? 'Your name is recorded on every stock change you make, so the audit trail always shows who did what.'
+            : 'Every stock change is recorded against the signed-in member, so the audit trail always shows who did what.'}
         </p>
         <button
           type="button"
-          onClick={() => { setEmail(''); setPassword(''); setError(''); setInfo(''); }}
-          className="mt-4 w-full text-xs text-slate-400 hover:text-white"
+          onClick={() => { setMode(mode === 'signup' ? 'signin' : 'signup'); setError(''); setInfo(''); setPassword(''); }}
+          className="mt-4 w-full text-xs font-semibold text-teal-300 hover:text-white"
+        >
+          {mode === 'signup' ? 'Already have an account? Sign in' : 'New to the team? Create an account'}
+        </button>
+        <button
+          type="button"
+          onClick={() => { setEmail(''); setPassword(''); setName(''); setError(''); setInfo(''); }}
+          className="mt-2 w-full text-xs text-slate-400 hover:text-white"
         >
           Clear fields
         </button>

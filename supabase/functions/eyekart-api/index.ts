@@ -71,7 +71,7 @@ async function getProfile(req: Request) {
     throw new ApiError(401, "INVALID_SESSION", "Your session is invalid or expired. Please sign in again.");
   }
 
-  const { data: profile, error } = await db()
+  let { data: profile, error } = await db()
     .from("app_users")
     .select("id,email,display_name,role,assigned_branch_id,is_active")
     .eq("id", authData.user.id)
@@ -81,8 +81,34 @@ async function getProfile(req: Request) {
     console.error("app_users profile query failed", error.message);
     throw new ApiError(503, "PROFILE_LOOKUP_FAILED", "Could not verify your EyeKart access profile.");
   }
-  if (!profile || !profile.is_active) {
-    throw new ApiError(403, "EYEKART_ACCESS_NOT_ASSIGNED", "This authenticated account has no active EyeKart role. An administrator must provision its app_users profile.");
+
+  // Open sign-up (decided 2026-11-05): any team member may create their own
+  // account in the app. The first account ever provisioned becomes ADMIN so
+  // the warehouse count and admin-only actions always have an owner; every
+  // account after that becomes RECEPTIONIST. Roles can be changed later by an
+  // ADMIN directly in the app_users table.
+  if (!profile) {
+    const displayName =
+      (authData.user.user_metadata as any)?.display_name ||
+      authData.user.email?.split("@")[0] ||
+      "EyeKart member";
+    const { data: provisioned, error: provisionError } = await db().rpc("provision_app_user", {
+      p_id: authData.user.id,
+      p_email: authData.user.email ?? "",
+      p_display_name: displayName,
+    });
+    if (provisionError || !provisioned) {
+      console.error("app_users auto-provision failed", provisionError?.message);
+      throw new ApiError(503, "PROFILE_LOOKUP_FAILED", "Could not set up your EyeKart access profile. Please try signing in again.");
+    }
+    profile = provisioned;
+  }
+  if (!profile) {
+    throw new ApiError(503, "PROFILE_LOOKUP_FAILED", "Could not set up your EyeKart access profile. Please try signing in again.");
+  }
+
+  if (!profile.is_active) {
+    throw new ApiError(403, "EYEKART_ACCESS_NOT_ASSIGNED", "This EyeKart account is inactive. An administrator must reactivate it before access is granted.");
   }
   if (!["ADMIN", "RECEPTIONIST", "BRANCH_USER"].includes(profile.role)) {
     throw new ApiError(403, "INVALID_ROLE", "This account does not have an approved EyeKart role.");

@@ -25,20 +25,21 @@ New Supabase projects no longer automatically expose new tables through the Data
 1. Create the dedicated Supabase project under the owner-confirmed organization and a region suitable for Kenya/production traffic.
 2. Apply `supabase/schema.sql` once through Supabase database migration tooling. Check that 35 branches sum to 3,740 and that four initial zero-stock alerts exist. Check `app_users` starts empty and warehouse inventory is absent.
 3. Deploy `supabase/functions/eyekart-api/index.ts` as the `eyekart-api` Edge Function with JWT verification enabled. The function uses Supabase's server-managed `SUPABASE_URL`, `SUPABASE_SERVICE_ROLE_KEY`, and `SUPABASE_ANON_KEY` fallback. Never copy its privileged key to Vercel or the frontend.
-4. Create the first user under Supabase Auth using the actual owner's email. Then add exactly one row to `public.app_users` for that user's Auth UUID, setting `role='ADMIN'`, `is_active=true`, and a confirmed display name. Do not invent an email or promote a placeholder account.
+4. Apply `supabase/migrations/002_open_signup.sql` once. It installs `provision_app_user`, which the Edge Function calls the first time a signed-in member has no profile.
+5. In Supabase Auth settings, turn **Confirm email off** so team members can sign up and use the app immediately, and set the Site URL to the live Vercel URL. Open sign-up (decided 2026-11-05): anyone on the team creates their own account in the app — no per-email pre-provisioning. The first account ever provisioned becomes ADMIN; every account after that becomes RECEPTIONIST. Anyone with the live link can create an account, so share the link only inside the team. Roles can be changed later by an ADMIN directly in the `app_users` table.
 5. Obtain the project URL and publishable key and configure these **Vercel Production build variables**:
    - `VITE_SUPABASE_URL`
    - `VITE_SUPABASE_PUBLISHABLE_KEY`
    - `VITE_EYEKART_LIVE_MODE=true`
    These are public project settings; no service role secret is needed in Vercel.
 6. Redeploy Vercel after setting build variables. Live mode shows a Supabase sign-in screen and does not allow the old preset demo-user identity to authorize writes.
-7. Sign in as the authorized admin and test the API routes below before enabling normal stock operations for staff. Create accounts through Supabase Auth and assign roles via `app_users`; never trust browser role fields.
+7. Sign up in the app as the first member (becomes ADMIN) and test the API routes below before enabling normal stock operations for staff. Never trust browser role fields.
 
 ## Required pre-production test checklist
 
-- `/functions/v1/eyekart-api/health` returns `LIVE_CRUD`.
+- `/functions/v1/eyekart-api/health` returns `LIVE_CRUD` when called with a valid JWT (signed-out calls are rejected 401 by the gateway's JWT verification).
 - Signed-out branch and mutation requests are rejected.
-- A signed-in user without an active `app_users` profile receives 403.
+- A signed-in user with an inactive `app_users` profile receives 403; a brand-new signed-in member is auto-provisioned (first account ADMIN, later accounts RECEPTIONIST).
 - An authorized admin/receptionist can load 35 branch rows with sum 3,740.
 - Update one test branch by +1 and save with an audit reason; verify branch balance, total, movement audit and alert all update.
 - Refresh the page and reopen the counter; the saved value must remain.
