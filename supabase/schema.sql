@@ -200,7 +200,11 @@ begin
     raise exception using errcode = 'P0002', message = 'Active branch not found.';
   end if;
   if p_expected_updated_at is not null and v_branch.updated_at <> p_expected_updated_at then
-    raise exception using errcode = '40001', message = 'Stock changed since this counter was opened. Refresh it and review the latest values before saving.';
+    -- Return a sentinel instead of raising SQLSTATE 40001: a 40001 raise from
+    -- this RPC hangs the PostgREST call (reproduced 2026-11-06: stale-version
+    -- stock writes timed out repeatedly while fresh writes returned instantly).
+    -- The Edge Function maps {stale: true} to HTTP 409.
+    return jsonb_build_object('stale', true, 'message', 'Stock changed since this counter was opened. Refresh it and review the latest values before saving.');
   end if;
 
   v_before := jsonb_build_object('male',v_branch.male_on_hand,'female',v_branch.female_on_hand,'kids',v_branch.kids_on_hand);
@@ -359,7 +363,8 @@ begin
   end if;
   select * into v_order from public.orders where id=p_order_id for update;
   if not found or v_order.status <> 'APPROVED' then
-    raise exception using errcode='40001', message='Order is not in APPROVED state.';
+    -- P0001, not 40001: a 40001 raise hangs the PostgREST call (see adjust_branch_stock).
+    raise exception using errcode='P0001', message='Order is not in APPROVED state.';
   end if;
   select * into v_warehouse from public.warehouse_inventory where id='central' for update;
   if not found then
@@ -417,7 +422,8 @@ begin
   end if;
   select * into v_order from public.orders where id=p_order_id for update;
   if not found or v_order.status <> 'DISPATCHED' then
-    raise exception using errcode='40001', message='Order is not in DISPATCHED state.';
+    -- P0001, not 40001: a 40001 raise hangs the PostgREST call (see adjust_branch_stock).
+    raise exception using errcode='P0001', message='Order is not in DISPATCHED state.';
   end if;
   select * into v_branch from public.branches where id=v_order.branch_id and is_active for update;
   if not found then raise exception using errcode='P0002', message='Branch not found.'; end if;

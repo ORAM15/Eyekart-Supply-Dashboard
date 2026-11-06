@@ -335,6 +335,11 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
         : "Stock update failed. No partial inventory change was committed.";
       throw new ApiError(400, "STOCK_UPDATE_FAILED", message);
     }
+    // Stale-version sentinel: adjust_branch_stock returns {stale: true} instead
+    // of raising, because a 40001 raise hangs the PostgREST call.
+    if (data && (data as any).stale === true) {
+      throw new ApiError(409, "STALE_STOCK_VERSION", "This counter was updated by another user after you opened it. Close and reopen the counter, review the latest quantities, and apply your change again.");
+    }
     const row = await oneBranch(id);
     const movementRows = await rowsFor("stock_movements", q2 => q2.eq("branch_id", id).order("timestamp", { ascending: false }).limit(10));
     return {
@@ -666,12 +671,16 @@ async function handleLive(req: Request, url: URL, path: string, profile: any) {
     );
     const note = typeof payload.reason === "string" ? payload.reason.trim() : "";
     if (note.length < 3) throw new ApiError(400,"AUDIT_REASON_REQUIRED","A reason of at least 3 characters is required.");
-    const { error } = await client.rpc("adjust_branch_stock", {
+    const { data, error } = await client.rpc("adjust_branch_stock", {
       p_branch_id: row.id,p_male:q.male,p_female:q.female,p_kids:q.kids,
       p_note:note,p_actor_user_id:profile.id,p_actor_name:profile.display_name,
       p_expected_updated_at:payload.expectedUpdatedAt ?? null,
     });
     if (error) throw new ApiError(400,"STOCK_UPDATE_FAILED","Stock adjustment failed; no partial update was committed.");
+    // Stale-version sentinel (see the branches stock route): {stale: true} means 409.
+    if (data && (data as any).stale === true) {
+      throw new ApiError(409,"STALE_STOCK_VERSION","This counter was updated by another user after you opened it. Close and reopen the counter, review the latest quantities, and apply your change again.");
+    }
     return { success:true,branch:branchDto(await oneBranch(row.id)),mode:"LIVE_CRUD" };
   }
 
