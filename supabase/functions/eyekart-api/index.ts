@@ -688,7 +688,13 @@ Deno.serve(async (req: Request) => {
   if (req.method === "OPTIONS") return new Response(null, { status: 204, headers: corsHeaders(origin) });
   if (origin && !isAllowedOrigin(origin)) return json(403, { error: "Origin not allowed." }, origin);
 
-  const path = url.pathname.replace(/^\/functions\/v1\/eyekart-api\/?/, "").replace(/^\/+/, "").replace(/\/$/, "");
+  // Derive the route without relying on the gateway's exact path prefix:
+  // Supabase may forward the request as /functions/v1/eyekart-api/<route>,
+  // as /eyekart-api/<route>, or as /<route>. Find the function name segment
+  // and take everything after it; otherwise use the whole path.
+  const segments = url.pathname.split("/").filter(Boolean);
+  const fnIndex = segments.indexOf("eyekart-api");
+  const path = (fnIndex >= 0 ? segments.slice(fnIndex + 1) : segments).join("/");
   if (path === "health" && req.method === "GET") {
     return json(200, {
       status: "ok", service: "EyeKart live inventory API", mode: "LIVE_CRUD",
